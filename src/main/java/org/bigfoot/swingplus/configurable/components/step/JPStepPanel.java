@@ -10,8 +10,6 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * TODO
- *
  * @author Jonathan la Roi
  * @since 06/11/2020
  */

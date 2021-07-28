@@ -269,9 +269,6 @@ public class JPCalendarPanel extends JPanel implements JPConfigurable {
 
         private JPLabel jaarLbl, maandLbl;
 
-        /**
-         * TODO Als maand op max zit, door naar volgend jaar, hetzelfde voor terug gaan
-         */
         protected JaarMaandSelector() {
             super(new MigLayout("fillx", "[][][][][][]", "[25px]"));
             btnJaarNext = new JPButton("", e -> {

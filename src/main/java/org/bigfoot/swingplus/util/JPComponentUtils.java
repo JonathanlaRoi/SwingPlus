@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
  * @since 22/03/2021
  */
 @UtilityClass
-public class JPComponentUtil {
+public class JPComponentUtils {
 
     public static void addActionListener(AbstractButton abstractButton, ActionListener listener, KeyStroke... keyStrokes) {
         addActionListener(abstractButton, listener.toString(), listener, keyStrokes);

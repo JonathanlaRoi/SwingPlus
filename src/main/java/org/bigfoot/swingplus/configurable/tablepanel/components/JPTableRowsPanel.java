@@ -9,6 +9,7 @@ import org.bigfoot.swingplus.configurable.JPPanel;
 import org.bigfoot.swingplus.configurable.tablepanel.objects.JPTablePanelColumn;
 import org.bigfoot.swingplus.configurable.tablepanel.objects.JPTablePanelRow;
 
+@Deprecated
 public class JPTableRowsPanel<OBJECT, SORT> extends JPPanel {
 	
 	public JPTableRowsPanel(List<JPTablePanelRow<OBJECT, SORT>> rows){

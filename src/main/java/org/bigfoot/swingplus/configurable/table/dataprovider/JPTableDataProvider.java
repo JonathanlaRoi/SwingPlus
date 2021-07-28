@@ -10,8 +10,6 @@ import org.bigfoot.swingplus.configurable.tablepanel.components.JPPageable;
 import java.util.List;
 
 /**
- * TODO sorteren loshalen van dataprovider in losse JPSortableTableDataProvider
- *
  * @author Jonathan la Roi
  * @since 8/31/2020
  */

@@ -8,6 +8,7 @@ import lombok.Getter;
 import org.bigfoot.swingplus.configurable.tablepanel.objects.JPSortOrder;
 import org.bigfoot.swingplus.eventlisteners.JPLambdaMouseClickListener;
 
+@Deprecated
 public abstract class JPTableHeaderLabel<SORT> extends JLabel {
 	
 	@Getter

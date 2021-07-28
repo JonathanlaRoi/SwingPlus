@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 
 import org.bigfoot.swingplus.configurable.tablepanel.objects.JPTablePanelColumn;
 
+@Deprecated
 public class JPTablePanelColumnBuilder {
 	
 	public static <OBJECT, SORT> JPTablePanelColumn<OBJECT, Void, SORT> getEmptyColumn(String migLayoutProperties, String migLayoutCellProperties){

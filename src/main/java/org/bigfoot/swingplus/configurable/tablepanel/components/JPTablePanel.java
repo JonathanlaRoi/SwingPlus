@@ -15,6 +15,7 @@ import org.bigfoot.swingplus.configurable.tablepanel.objects.JPSortOrder;
 import org.bigfoot.swingplus.configurable.tablepanel.objects.JPTablePanelColumn;
 import org.bigfoot.swingplus.configurable.tablepanel.objects.JPTablePanelRow;
 
+@Deprecated
 public abstract class JPTablePanel<OBJECT, SORT> extends JPPanel {
 	
 	protected JScrollPane pane;

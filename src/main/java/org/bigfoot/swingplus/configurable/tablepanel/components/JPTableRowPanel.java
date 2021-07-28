@@ -7,6 +7,7 @@ import javax.swing.BorderFactory;
 
 import org.bigfoot.swingplus.configurable.JPModeledPanel;
 
+@Deprecated
 public class JPTableRowPanel<OBJECT> extends JPModeledPanel<OBJECT> {
 	public JPTableRowPanel(LayoutManager arg0, OBJECT arg1, int columnCount) {
 		super(arg0, arg1);

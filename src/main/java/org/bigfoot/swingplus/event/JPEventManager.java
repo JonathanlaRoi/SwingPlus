@@ -9,7 +9,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
 /**
- * Event manager
+ * Event manager, pile of shit
  *
  * @author Jonathan la Roi
  * @since 30 augustus 2019
@@ -33,9 +33,6 @@ public class JPEventManager {
         return instance;
     }
 
-    /**
-     * TODO Spring integration toevoegen want dit werkt shit
-     */
     public static void autoRegister() {
         Reflections refs = new Reflections();
         Set<Class<? extends JPListener>> types = refs.getSubTypesOf(JPListener.class);

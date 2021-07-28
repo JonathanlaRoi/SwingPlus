@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
- * TODO copy maken van listeners ipv object assignen.
- *
  * @author Jonathan la Roi
  */
 class JPEventWorker extends SwingWorker<List<JPRespondMethod>, Void> {

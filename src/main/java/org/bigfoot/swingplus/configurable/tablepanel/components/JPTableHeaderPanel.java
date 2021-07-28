@@ -16,6 +16,7 @@ import org.bigfoot.swingplus.configurable.JPPanel;
 import org.bigfoot.swingplus.configurable.tablepanel.objects.JPSortOrder;
 import org.bigfoot.swingplus.configurable.tablepanel.objects.JPTablePanelColumn;
 
+@Deprecated
 public abstract class JPTableHeaderPanel<OBJECT, SORT> extends JPPanel {
 	
 	@Getter
@@ -56,7 +57,6 @@ public abstract class JPTableHeaderPanel<OBJECT, SORT> extends JPPanel {
 		String value = "";
 		
 		for(JPTablePanelColumn<OBJECT, ?, SORT> column : columns){
-			//TODO verdere styling
 			value += "["+column.getMigLayoutProperties()+"]";
 		}
 		

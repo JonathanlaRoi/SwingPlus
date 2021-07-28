@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
+@Deprecated
 public class JPPageable {
 
     @Setter

@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import javax.swing.*;
 
+@Deprecated
 @AllArgsConstructor
 @Getter
 @Setter

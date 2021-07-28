@@ -44,7 +44,6 @@ public class JPDatepickerTextField extends JPTextField {
             @Override
             public void onDateChange() {
                 super.onDateChange();
-                //TODO Properly resize if needed
                 window.repaint();
                 window.revalidate();
             }

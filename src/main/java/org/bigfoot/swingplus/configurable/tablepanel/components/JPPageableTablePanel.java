@@ -14,6 +14,7 @@ import org.bigfoot.swingplus.configurable.components.JPLabel;
 import org.bigfoot.swingplus.configurable.tablepanel.objects.JPSortOrder;
 import org.bigfoot.swingplus.configurable.tablepanel.objects.JPTablePanelColumn;
 
+@Deprecated
 public abstract class JPPageableTablePanel<OBJECT, SORT> extends JPTablePanel<OBJECT, SORT>{
 	
 	private final JPPageable pageable;
