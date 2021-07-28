@@ -6,7 +6,7 @@
 
     <groupId>org.bigfoot.swingplus</groupId>
     <artifactId>SwingPlus</artifactId>
-    <version>2021.7.28.3-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <build>
         <plugins>
             <plugin>
