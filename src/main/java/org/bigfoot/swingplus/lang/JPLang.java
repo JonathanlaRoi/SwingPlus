@@ -7,11 +7,15 @@ import java.util.Locale;
 
 public class JPLang {
 
-	@Getter
-	@Setter
-	private static Locale locale;
+    @Getter
+    @Setter
+    private static String defaultLocalePath;
 
-	@Getter
-	@Setter
-	private static String defaultLocalePath;
+    public static void setLocale(Locale locale) {
+        Locale.setDefault(locale);
+    }
+
+    public static Locale getLocale() {
+        return Locale.getDefault();
+    }
 }
