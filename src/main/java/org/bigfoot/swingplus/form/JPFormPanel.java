@@ -51,7 +51,7 @@ public class JPFormPanel<T> extends JPModeledPanel<T> implements JPFormComponent
 
     private Class<T> clazz;
 
-    private List<JPValidator<?>> validators = new ArrayList<>();
+    private final List<JPValidator<?>> validators = new ArrayList<>();
 
     public JPFormPanel(String id, LayoutManager arg0, boolean arg1, T model) {
         super(arg0, arg1, model);
@@ -81,21 +81,13 @@ public class JPFormPanel<T> extends JPModeledPanel<T> implements JPFormComponent
         super(null);
         setId(id);
         this.clazz = clazz;
-        try {
-            setModelBasedOnType();
-        } catch (JPFormException ex) {
-            log.warn(ex.getMessage(), ex);
-        }
+        setModelBasedOnType();
     }
 
     public JPFormPanel(Class<T> clazz) {
         super(null);
         this.clazz = clazz;
-        try {
-            setModelBasedOnType();
-        } catch (JPFormException ex) {
-            log.warn(ex.getMessage(), ex);
-        }
+        setModelBasedOnType();
     }
 
     public JPFormPanel(T model) {

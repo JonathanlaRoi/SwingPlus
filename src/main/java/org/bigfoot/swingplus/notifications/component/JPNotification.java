@@ -206,7 +206,7 @@ public class JPNotification extends JPWindow {
             URL url = getClass().getResource(pathToAudioResource);
             try {
                 if (url != null) {
-                    JPAudioUtils.playWavSound(url);
+                    JPAudioUtils.playSound(url);
                 }
             } catch (IOException | UnsupportedAudioFileException |
                     LineUnavailableException |

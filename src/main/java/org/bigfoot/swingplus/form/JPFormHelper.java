@@ -146,7 +146,7 @@ public class JPFormHelper {
 				break;
 			} catch(InstantiationException | IllegalAccessException | IllegalArgumentException | 
 					InvocationTargetException | NoSuchMethodException | SecurityException e){
-				throw new JPFormException("Cannot crete instance of class " + type, e);
+				throw new JPFormException("Cannot create instance of class " + type, e);
 			}
 		}
 		return sub;

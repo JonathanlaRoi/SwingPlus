@@ -16,7 +16,7 @@ import org.bigfoot.swingplus.audio.JPAudioListener;
 @UtilityClass
 public class JPAudioUtils {
 
-	public static void playWavSound(URL clipFile) throws IOException,
+	public static void playSound(URL clipFile) throws IOException,
 			UnsupportedAudioFileException, LineUnavailableException,
 			InterruptedException {
 		JPAudioListener listener = new JPAudioListener();
@@ -30,7 +30,7 @@ public class JPAudioUtils {
 		}
 	}
 
-	public static void playWavSound(InputStream clipFile) throws IOException,
+	public static void playSound(InputStream clipFile) throws IOException,
 			UnsupportedAudioFileException, LineUnavailableException,
 			InterruptedException {
 		JPAudioListener listener = new JPAudioListener();

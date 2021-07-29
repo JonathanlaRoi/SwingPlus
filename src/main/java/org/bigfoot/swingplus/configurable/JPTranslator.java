@@ -30,7 +30,7 @@ public interface JPTranslator {
             return String.format(JPGuiUtils.translate(key, clazz),
                     Arrays.stream(paramKeys)
                             .map(paramKey -> JPGuiUtils.translate(paramKey, clazz))
-                            .collect(Collectors.toList()));
+                            .toArray());
         } else {
             return JPGuiUtils.translate(key, clazz);
         }
