@@ -250,14 +250,14 @@ public class JPFormPanel<T> extends JPModeledPanel<T> implements JPFormComponent
         List<String> invalidComponents = new ArrayList<>();
         for (JPFormComponent<?> comp : getFormComponents()) {
             if (!comp.isValid()) {
-                ((JPFormComponent<?>) comp).markAsInvalid();
-                String lbl = ((JPFormComponent<?>) comp).getValidationLabel();
+                comp.markAsInvalid();
+                String lbl = comp.getValidationLabel();
                 if (lbl == null) {
-                    lbl = ((JPFormComponent<?>) comp).getId();
+                    lbl = comp.getId();
                 }
                 invalidComponents.add(lbl);
             } else {
-                ((JPFormComponent<?>) comp).markAsValid();
+                comp.markAsValid();
             }
         }
         repaint();
@@ -338,7 +338,7 @@ public class JPFormPanel<T> extends JPModeledPanel<T> implements JPFormComponent
             if (property != null) {
                 property = getGetterMethod(id, property).invoke(property);
             } else {
-                property = null;
+                break;
             }
         }
         try {
@@ -363,7 +363,7 @@ public class JPFormPanel<T> extends JPModeledPanel<T> implements JPFormComponent
             if (property != null) {
                 property = getGetterMethod(id, property).invoke(property);
             } else {
-                property = null;
+                break;
             }
         }
         return property;
@@ -386,8 +386,7 @@ public class JPFormPanel<T> extends JPModeledPanel<T> implements JPFormComponent
                         ", make sure it has a constructor with no arguments or set the model manually", e);
             }
         } else {
-            throw new JPFormException("Can't create new instance for the form, " +
-                    "class of model is unknown");
+            throw new JPFormException("Can't create new instance for form, class of model is unknown");
         }
     }
 

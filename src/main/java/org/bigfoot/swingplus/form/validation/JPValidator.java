@@ -21,7 +21,7 @@ public abstract class JPValidator<TYPE> {
 	
 	@Override
 	public boolean equals(Object obj){
-		if(obj == null || !(obj instanceof JPValidator))
+		if(!(obj instanceof JPValidator))
 			return false;
 		JPValidator other = (JPValidator) obj;
 		return Objects.equals(this.getId(), other.getId());

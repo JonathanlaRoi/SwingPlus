@@ -21,12 +21,6 @@ public interface JPFormContainer extends JPContainer {
             if (comp instanceof JScrollPane) {
                 comp = ((JScrollPane) comp).getViewport().getView();
             }
-//            if (comp instanceof JPFormTabbedPane) {
-//                formComponents.addAll(((JPFormTabbedPane) comp).getFormComponents());
-//            }
-//            if (comp instanceof JPFormEmbeddedPanel) {
-//                formComponents.addAll(((JPFormEmbeddedPanel) comp).getFormComponents());
-//            }
             if (comp instanceof JPFormComponent) {
                 formComponents.add((JPFormComponent<?>) comp);
             }

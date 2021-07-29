@@ -120,8 +120,7 @@ public class JPFormHelper {
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, 
 					InstantiationException, NoSuchMethodException, SecurityException{
 		getSetterMethod(id, property).invoke(property, getNewInstanceOf(field.getType()));
-		Object obj = getGetterMethod(id, property).invoke(property);
-		return obj;
+		return getGetterMethod(id, property).invoke(property);
 	}
 	
 	protected static Object getNewInstanceOf(Class<?> type) 
