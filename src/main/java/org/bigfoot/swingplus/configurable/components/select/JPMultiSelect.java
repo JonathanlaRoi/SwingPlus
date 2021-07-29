@@ -21,7 +21,7 @@ public class JPMultiSelect<MODEL> extends JPButton implements JPConfigurable {
     private final JPopupMenu menu;
 
     @Getter
-    private List<MODEL> items = new ArrayList<>();
+    private List<MODEL> items;
 
     @Getter
     private List<MODEL> selectedItems = new ArrayList<>();

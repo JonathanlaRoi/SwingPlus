@@ -51,11 +51,6 @@ public class JPLabel extends JLabel implements JPConfigurable {
         setFont(font);
     }
 
-    @Override
-    public void onConfigure() {
-
-    }
-
     public void addMouseListener(JPLambdaPopupMouseListener adapter) {
         super.addMouseListener(adapter);
     }

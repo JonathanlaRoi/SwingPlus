@@ -125,11 +125,6 @@ public class JPTextField extends JTextField implements JPConfigurable {
         return this;
     }
 
-    @Override
-    public void onConfigure() {
-
-    }
-
     public JPTextField addMouseListener(JPLambdaPopupMouseListener adapter) {
         super.addMouseListener(adapter);
         return this;

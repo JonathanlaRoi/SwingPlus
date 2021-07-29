@@ -27,10 +27,6 @@ public class JPComboBox<T> extends JComboBox<T> implements JPConfigurable {
         addActionListener(actionListener);
     }
 
-    public void onConfigure() {
-
-    }
-
     public void setSelectedTypedItem(T value) {
         setExecuteListener(false);
         T item;

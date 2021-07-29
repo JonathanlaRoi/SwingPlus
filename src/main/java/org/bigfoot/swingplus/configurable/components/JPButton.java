@@ -56,10 +56,6 @@ public class JPButton extends JButton implements JPConfigurable {
         addActionListener(al);
     }
 
-    public void onConfigure() {
-
-    }
-
     public void addActionListener(ActionListener listener, KeyStroke... keyStrokes) {
         JPComponentUtils.addActionListener(this, listener, keyStrokes);
     }

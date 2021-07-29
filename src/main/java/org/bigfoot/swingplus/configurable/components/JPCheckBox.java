@@ -27,11 +27,6 @@ public class JPCheckBox extends JCheckBox implements JPConfigurable {
         addActionListener(al);
     }
 
-    @Override
-    public void onConfigure() {
-
-    }
-
     public void addActionListener(ActionListener listener, KeyStroke... keyStrokes) {
         JPComponentUtils.addActionListener(this, listener, keyStrokes);
     }

@@ -6,6 +6,7 @@ import javax.swing.Action;
 import javax.swing.JMenu;
 
 import org.bigfoot.swingplus.configurable.JPConfigurable;
+import org.bigfoot.swingplus.configurable.JPContainer;
 import org.bigfoot.swingplus.eventlisteners.JPLambdaMouseClickListener;
 import org.bigfoot.swingplus.eventlisteners.JPLambdaPopupMouseListener;
 
@@ -13,7 +14,7 @@ import org.bigfoot.swingplus.eventlisteners.JPLambdaPopupMouseListener;
  * @author Jonathan la Roi
  * @since 14 march 2020
  */
-public class JPMenu extends JMenu implements JPConfigurable {
+public class JPMenu extends JMenu implements JPContainer {
 	
     public JPMenu() {
         super("");
@@ -28,7 +29,8 @@ public class JPMenu extends JMenu implements JPConfigurable {
     public JPMenu(Action a) {
         super(a);
     }
-	
+
+    @Override
 	public void onConfigure(){
 		for(Component comp : this.getMenuComponents()){
 			if(comp instanceof JPConfigurable){

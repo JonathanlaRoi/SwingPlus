@@ -17,80 +17,84 @@ import org.bigfoot.swingplus.eventlisteners.JPLambdaMouseClickListener;
 import org.bigfoot.swingplus.eventlisteners.JPLambdaPopupMouseListener;
 
 public class JPFileSelector extends JPanel implements JPConfigurable {
-	
-	@Getter
-	private JPButton btn;
-	@Getter
-	private JPTextField textfield;
-	private Path path;
-	private JPFileSelectionType fileSelectionType = JPFileSelectionType.ALL;
-	@Setter
-	@Getter
-	private Component focusComponent;
-	
-	public JPFileSelector(JPFileSelectionType type){
-		this();
-		this.setFileSelectionType(type);
-	}
-	
-	public JPFileSelector() {
-		super();
-		setLayout(new MigLayout("insets 0", "[grow][shrink]", "[grow]"));
-		
-		textfield = new JPTextField();
-		textfield.setEditable(false);
-		btn = new JPButton("...");
-		
-		add(textfield, "grow");
-		add(btn, "shrinkx, growy");
-		
-		btn.addActionListener(event -> {
-			JFileChooser fc = new JFileChooser();
-			fc.setFileSelectionMode(fileSelectionType.getValue());
-			if (path != null) {
-				fc.setCurrentDirectory(getPath().toFile());
-			}
 
-			int returnVal = fc.showOpenDialog(focusComponent != null ? focusComponent : btn);
+    @Getter
+    private final JPButton btn;
 
-			if (returnVal == JFileChooser.APPROVE_OPTION) {
-				setPath(fc.getSelectedFile().toPath());
-			}
-		});
-	}
+    @Getter
+    private final JPTextField textfield;
 
-	public Path getPath() {
-		return path;
-	}
+    private Path path;
 
-	public void setPath(Path path) {
-		this.path = path;
-		textfield.setText(path != null ? path.toString() : null);
-	}
+    private JPFileSelectionType fileSelectionType = JPFileSelectionType.ALL;
 
-	@Override
-	public void setEnabled(boolean enabled){
-		btn.setEnabled(enabled);
-	}
-	
-	@Override
-	public boolean isEnabled(){
-		return btn.isEnabled();
-	}
+    @Setter
+    @Getter
+    private Component focusComponent;
 
-	public JPFileSelectionType getFileSelectionType() {
-		return fileSelectionType;
-	}
+    public JPFileSelector(JPFileSelectionType type) {
+        this();
+        this.setFileSelectionType(type);
+    }
 
-	public void setFileSelectionType(JPFileSelectionType fileSelectionType) {
-		this.fileSelectionType = fileSelectionType;
-	}
-	
-	public void addMouseListener(JPLambdaPopupMouseListener adapter){
-		super.addMouseListener(adapter);
-	}
-	
-	public void addMouseListener(JPLambdaMouseClickListener adapter){
-		super.addMouseListener(adapter);
-	}
+    public JPFileSelector() {
+        super();
+        setLayout(new MigLayout("insets 0", "[grow][shrink]", "[grow]"));
+
+        textfield = new JPTextField();
+        textfield.setEditable(false);
+        btn = new JPButton("...");
+
+        add(textfield, "grow");
+        add(btn, "shrinkx, growy");
+
+        btn.addActionListener(event -> {
+            JFileChooser fc = new JFileChooser();
+            fc.setFileSelectionMode(fileSelectionType.getValue());
+            if (path != null) {
+                fc.setCurrentDirectory(getPath().toFile());
+            }
+
+            int returnVal = fc.showOpenDialog(focusComponent != null ? focusComponent : btn);
+
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                setPath(fc.getSelectedFile().toPath());
+            }
+        });
+    }
+
+    public Path getPath() {
+        return path;
+    }
+
+    public void setPath(Path path) {
+        this.path = path;
+        textfield.setText(path != null ? path.toString() : null);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        btn.setEnabled(enabled);
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return btn.isEnabled();
+    }
+
+    public JPFileSelectionType getFileSelectionType() {
+        return fileSelectionType;
+    }
+
+    public void setFileSelectionType(JPFileSelectionType fileSelectionType) {
+        this.fileSelectionType = fileSelectionType;
+    }
+
+    public void addMouseListener(JPLambdaPopupMouseListener adapter) {
+        super.addMouseListener(adapter);
+    }
+
+    public void addMouseListener(JPLambdaMouseClickListener adapter) {
+        super.addMouseListener(adapter);
+    }
 }

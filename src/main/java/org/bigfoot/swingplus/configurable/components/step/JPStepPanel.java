@@ -21,8 +21,6 @@ public class JPStepPanel<COMPONENT extends Component> extends JPPanel {
     @Getter
     private JPStep<COMPONENT> selectedStep;
 
-    private JPPanel stepsPanel;
-
     @SafeVarargs
     public JPStepPanel(JPStep<COMPONENT>... steps) {
         this(Arrays.asList(steps));
@@ -34,7 +32,7 @@ public class JPStepPanel<COMPONENT extends Component> extends JPPanel {
         if (steps.size() > 0) {
             selectedStep = steps.get(0);
         }
-        stepsPanel = new JPPanel(new FlowLayout());
+        JPPanel stepsPanel = new JPPanel(new FlowLayout());
 
         for (JPStep<COMPONENT> step : steps) {
             stepsPanel.add(step.getComponent());

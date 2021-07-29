@@ -6,8 +6,4 @@ import org.bigfoot.swingplus.configurable.JPConfigurable;
 
 public class JPProgressBar extends JProgressBar implements JPConfigurable {
 
-	@Override
-	public void onConfigure() {
-		
-	}
 }

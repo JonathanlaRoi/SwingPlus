@@ -14,11 +14,6 @@ import java.awt.event.ActionListener;
  */
 public class JPRadioButton extends JRadioButton implements JPConfigurable {
 
-    @Override
-    public void onConfigure() {
-
-    }
-
     public void addMouseListener(JPLambdaPopupMouseListener adapter) {
         super.addMouseListener(adapter);
     }
