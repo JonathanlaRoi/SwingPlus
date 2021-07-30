@@ -1,5 +1,6 @@
 package org.bigfoot.swingplus.configurable.components.calendar;
 
+import org.bigfoot.swingplus.configurable.JPConfigurable;
 import org.bigfoot.swingplus.util.JPDateUtils;
 import org.jdesktop.swingx.JXDatePicker;
 
@@ -11,7 +12,7 @@ import java.util.Locale;
  * @author Jonathan la Roi
  * @since 30/07/2021
  */
-public class JXPDatePicker extends JXDatePicker {
+public class JXPDatePicker extends JXDatePicker implements JPConfigurable {
 
     public JXPDatePicker() {
         this((Date) null, Locale.getDefault());
