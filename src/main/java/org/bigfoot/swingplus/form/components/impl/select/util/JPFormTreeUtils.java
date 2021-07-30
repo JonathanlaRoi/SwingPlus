@@ -18,11 +18,14 @@ public class JPFormTreeUtils {
     }
 
     public static <MODEL> List<JPTreeNode<MODEL>> getNodesForList(List<MODEL> values, Function<MODEL, MODEL> parentFunction) {
-        if (values == null || values.isEmpty()) {
+        if (values == null) {
             throw new IllegalArgumentException("values cannot be null");
         }
         if (parentFunction == null) {
             throw new IllegalArgumentException("parentFunction cannot be null");
+        }
+        if (values.isEmpty()) {
+            return new ArrayList<>();
         }
 
         List<JPTreeNode<MODEL>> nodes = new ArrayList<>();
