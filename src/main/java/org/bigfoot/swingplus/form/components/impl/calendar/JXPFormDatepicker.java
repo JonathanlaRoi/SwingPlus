@@ -22,7 +22,7 @@ public class JXPFormDatepicker extends JXPDatePicker implements JPFormComponent<
 
     @Getter
     @Setter
-    private boolean updatable;
+    private boolean updatable = true;
 
     public JXPFormDatepicker(String id) {
         this(id, (Date) null, Locale.getDefault());
