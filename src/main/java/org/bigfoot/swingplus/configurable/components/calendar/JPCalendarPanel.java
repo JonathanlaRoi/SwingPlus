@@ -21,7 +21,7 @@ public class JPCalendarPanel extends JPanel implements JPConfigurable {
 
     private JPanel dagenPanel;
 
-    private JaarMaandSelector jmSelect;
+    private YearMonthSelector jmSelect;
 
     private LocalDate date, min, max;
 
@@ -65,7 +65,7 @@ public class JPCalendarPanel extends JPanel implements JPConfigurable {
         setLayout(new MigLayout("fillx", "[]", "[25px][grow]"));
         setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
 
-        jmSelect = new JaarMaandSelector() {
+        jmSelect = new YearMonthSelector() {
             @Override
             public void onChange(Year jaar, Month maand) {
                 LocalDate now = LocalDate.now();
@@ -257,7 +257,7 @@ public class JPCalendarPanel extends JPanel implements JPConfigurable {
         init();
     }
 
-    class JaarMaandSelector extends JPPanel {
+    class YearMonthSelector extends JPPanel {
 
         @Getter
         private Year jaar = Year.of(date.getYear());
@@ -269,7 +269,7 @@ public class JPCalendarPanel extends JPanel implements JPConfigurable {
 
         private JPLabel jaarLbl, maandLbl;
 
-        protected JaarMaandSelector() {
+        protected YearMonthSelector() {
             super(new MigLayout("fillx", "[][][][][][]", "[25px]"));
             btnJaarNext = new JPButton("", e -> {
                 if (max.getYear() >= jaar.getYear() + 1) {

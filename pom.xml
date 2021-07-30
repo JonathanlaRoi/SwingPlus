@@ -25,6 +25,7 @@
         <com.miglayout.version>3.7.4</com.miglayout.version>
         <org.reflections.version>0.9.10</org.reflections.version>
         <org.projectlombok.version>1.18.10</org.projectlombok.version>
+        <swingx.version>1.6.1</swingx.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
@@ -68,6 +69,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${org.projectlombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.swinglabs</groupId>
+            <artifactId>swingx</artifactId>
+            <version>${swingx.version}</version>
         </dependency>
     </dependencies>
 
