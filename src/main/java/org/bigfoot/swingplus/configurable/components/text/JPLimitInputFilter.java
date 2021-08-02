@@ -3,9 +3,9 @@ package org.bigfoot.swingplus.configurable.components.text;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class JPLimitInputValidator extends JPInputValidator {
+public class JPLimitInputFilter extends JPInputFilter {
 	
-	private int maxLength;
+	private final int maxLength;
 	
 	@Override
 	public boolean validate(String text) {

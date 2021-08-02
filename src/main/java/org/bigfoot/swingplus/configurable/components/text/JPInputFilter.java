@@ -4,7 +4,7 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 
-public abstract class JPInputValidator extends DocumentFilter {
+public abstract class JPInputFilter extends DocumentFilter {
 
 	@Override
     public final void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {

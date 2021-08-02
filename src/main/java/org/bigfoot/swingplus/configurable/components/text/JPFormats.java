@@ -17,7 +17,7 @@ public class JPFormats {
 
     public static final String EMAIL = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
 
-    public static final String TELEFOONNUMMER = "\\+?[0-9\\- ]+";
+    public static final String TELEPHONE = "\\+?[0-9\\- ]+";
 
     public static final String TEXT = UPPER_CASE + LOWER_CASE;
 }

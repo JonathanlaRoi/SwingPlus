@@ -8,11 +8,12 @@ import javax.swing.text.DocumentFilter;
 
 @CommonsLog
 public class JPLimitDocumentFilter extends DocumentFilter {
-    private Integer limit;
+    private final Integer limit;
 
     private boolean enforceLimit = true;
 
     public JPLimitDocumentFilter(Integer limit) {
+        super();
         this.limit = limit;
     }
 
@@ -43,25 +44,5 @@ public class JPLimitDocumentFilter extends DocumentFilter {
         } else {
             super.replace(fb, offset, length, text, attrs);
         }
-    }
-
-    public String getFullReplaceText(FilterBypass fb, int offset, int length, String text) {
-        String over = null;
-        try {
-            over = "";
-            if (offset == 0 && length == 0) {
-                over += text + fb.getDocument().getText(0, fb.getDocument().getLength());
-            } else if (length == 0) {
-                over += fb.getDocument().getText(0, offset) + text + fb.getDocument().getText(offset, fb.getDocument().getLength() - offset);
-            } else if (offset == 0) {
-                over += text + fb.getDocument().getText(length, fb.getDocument().getLength() - length);
-            } else {
-                over += fb.getDocument().getText(0, offset) + text + fb.getDocument().getText(offset + length,
-                        fb.getDocument().getLength() - offset - length);
-            }
-        } catch (BadLocationException | RuntimeException e) {
-            over = null;
-        }
-        return over;
     }
 }

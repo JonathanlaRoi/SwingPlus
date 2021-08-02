@@ -8,7 +8,7 @@ import org.bigfoot.swingplus.form.components.JPEditable;
 import org.bigfoot.swingplus.form.components.JPFormComponent;
 import org.bigfoot.swingplus.form.components.JPReadOnly;
 import org.bigfoot.swingplus.form.exception.JPFormException;
-import org.bigfoot.swingplus.form.validation.JPValidator;
+import org.bigfoot.swingplus.form.validation.JPFormValidator;
 
 import javax.swing.text.JTextComponent;
 import java.awt.*;
@@ -51,7 +51,7 @@ public class JPFormPanel<T> extends JPModeledPanel<T> implements JPFormComponent
 
     private Class<T> clazz;
 
-    private final List<JPValidator<?>> validators = new ArrayList<>();
+    private final List<JPFormValidator<?>> validators = new ArrayList<>();
 
     public JPFormPanel(String id, LayoutManager arg0, boolean arg1, T model) {
         super(arg0, arg1, model);
@@ -181,11 +181,11 @@ public class JPFormPanel<T> extends JPModeledPanel<T> implements JPFormComponent
         return getModel();
     }
 
-    public void addValidator(JPValidator validator) {
+    public void addValidator(JPFormValidator validator) {
         this.validators.add(validator);
     }
 
-    public void removeValidator(JPValidator validator) {
+    public void removeValidator(JPFormValidator validator) {
         this.validators.remove(validator);
     }
 
@@ -265,7 +265,7 @@ public class JPFormPanel<T> extends JPModeledPanel<T> implements JPFormComponent
      */
     public List<String> validateModel() throws JPFormException {
         List<String> result = new ArrayList<>();
-        for (JPValidator validator : validators) {
+        for (JPFormValidator validator : validators) {
             try {
                 result.add(validator.validate(getValueOfModelProperty(validator.getId(), getModel())));
             } catch (RuntimeException | IllegalAccessException | InvocationTargetException e) {

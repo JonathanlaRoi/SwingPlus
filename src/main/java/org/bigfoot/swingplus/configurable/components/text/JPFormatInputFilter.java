@@ -3,15 +3,15 @@ package org.bigfoot.swingplus.configurable.components.text;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class JPFormatInputValidator extends JPLimitInputValidator {
+public class JPFormatInputFilter extends JPLimitInputFilter {
 	
-	private Pattern pattern;
+	private final Pattern pattern;
 	
-	public JPFormatInputValidator(String regex) {
+	public JPFormatInputFilter(String regex) {
 		this(0, regex);
 	}
 	
-	public JPFormatInputValidator(int maxLength, String regex) {
+	public JPFormatInputFilter(int maxLength, String regex) {
 		super(maxLength);
 		pattern = regex != null ? Pattern.compile(regex) : null;
 	}
