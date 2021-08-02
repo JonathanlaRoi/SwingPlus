@@ -23,16 +23,11 @@ public class JPTextField extends JTextField implements JPConfigurable {
 
     private static final int ICON_SPACING = 4;
 
-    @Deprecated
-    private Integer limit = 50;
-
-    @Deprecated
-    private boolean enforceLimit = true;
-
     private boolean required = false;
 
+    //TODO vervangen
     @Deprecated
-    private String format, activeFormat;
+    private String format;
 
     @Getter
     private ImageIcon icon;
@@ -41,53 +36,48 @@ public class JPTextField extends JTextField implements JPConfigurable {
     private Border border;
 
     public JPTextField() {
-        this(null, false, null);
+        this(null, null);
     }
 
-    @Deprecated
     public JPTextField(Integer maxLength) {
-        this(null, maxLength != null, maxLength);
+        this(null, maxLength);
     }
 
     public JPTextField(String text) {
-        this(text, false, null);
+        this(text, null);
     }
 
-    @Deprecated
     public JPTextField(String text, Integer maxLength) {
-        this(text, maxLength != null, maxLength);
-    }
-
-    @Deprecated
-    public JPTextField(String text, boolean enforceLimit, Integer maxLength) {
         super(text);
         setMaxLength(maxLength);
-        setEnforceLimit(enforceLimit && maxLength != null);
         this.border = getBorder();
     }
 
-    public void setEnforceLimit(boolean b) {
-        this.enforceLimit = b && getMaxLength() != null;
-        setMaxLength(getMaxLength());
-    }
-
-    public void setMaxLength(Integer i) {
-        this.limit = i;
-        if (this.enforceLimit && limit != null && this.limit < this.getText().length()) {
-            this.setText(this.getText().substring(0, i));
-        }
-        JPLimitDocumentFilter documentFilter;
-        if (activeFormat == null) {
-            documentFilter = new JPLimitDocumentFilter(limit);
+    public void setMaxLength(Integer limit) {
+        if (limit != null) {
+            if (limit < this.getText().length()) {
+                this.setText(this.getText().substring(0, limit));
+            }
+            JPLimitDocumentFilter documentFilter;
+            if (format == null || format.isEmpty()) {
+                documentFilter = new JPLimitDocumentFilter(limit);
+            } else {
+                documentFilter = new JPFormatDocumentFilter(limit, format);
+            }
+            ((AbstractDocument) this.getDocument()).setDocumentFilter(documentFilter);
+        } else if (format != null) {
+            ((AbstractDocument) this.getDocument()).setDocumentFilter(new JPFormatDocumentFilter(null, format));
         } else {
-            documentFilter = new JPFormatDocumentFilter(limit, activeFormat);
+            ((AbstractDocument) this.getDocument()).setDocumentFilter(null);
         }
-        documentFilter.setEnforceLimit(enforceLimit);
-        ((AbstractDocument) this.getDocument()).setDocumentFilter(documentFilter);
     }
 
     public Integer getMaxLength() {
-        return this.limit;
+        AbstractDocument document = ((AbstractDocument) this.getDocument());
+        if (document.getDocumentFilter() instanceof JPLimitDocumentFilter) {
+            return ((JPLimitDocumentFilter) document.getDocumentFilter()).getLimit();
+        }
+        return null;
     }
 
     public boolean isRequired() {
@@ -104,14 +94,6 @@ public class JPTextField extends JTextField implements JPConfigurable {
 
     public void setFormat(String format) {
         this.format = format;
-    }
-
-    public String getActiveFormat() {
-        return format;
-    }
-
-    public void setActiveFormat(String activeFormat) {
-        this.activeFormat = activeFormat;
         setMaxLength(getMaxLength());
     }
 
@@ -140,7 +122,7 @@ public class JPTextField extends JTextField implements JPConfigurable {
         return this;
     }
 
-    //Icon shizzles
+    //TODO what is this shit
     @Override
     public void setBorder(Border border) {
         this.border = border;
@@ -154,6 +136,7 @@ public class JPTextField extends JTextField implements JPConfigurable {
         }
     }
 
+    //TODO what is this shit
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);

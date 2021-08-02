@@ -1,5 +1,6 @@
 package org.bigfoot.swingplus.configurable.components.text.filter;
 
+import lombok.Getter;
 import lombok.extern.apachecommons.CommonsLog;
 
 import javax.swing.text.AttributeSet;
@@ -8,21 +9,12 @@ import javax.swing.text.DocumentFilter;
 
 @CommonsLog
 public class JPLimitDocumentFilter extends DocumentFilter {
+    @Getter
     private final Integer limit;
-
-    private boolean enforceLimit = true;
 
     public JPLimitDocumentFilter(Integer limit) {
         super();
         this.limit = limit;
-    }
-
-    public void setEnforceLimit(boolean enforceLimit) {
-        this.enforceLimit = enforceLimit && limit != null;
-    }
-
-    public boolean isEnforceLimit() {
-        return enforceLimit;
     }
 
     @Override
@@ -31,7 +23,7 @@ public class JPLimitDocumentFilter extends DocumentFilter {
             if (text != null) {
                 int currentLength = fb.getDocument().getLength();
                 int overLimit = (currentLength + text.length()) - limit - length;
-                if (isEnforceLimit() && overLimit > 0) {
+                if (overLimit > 0) {
                     text = text.substring(0, text.length() - overLimit);
                 }
                 if (text.length() > 0) {
