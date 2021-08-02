@@ -23,7 +23,6 @@ public class JPTextArea extends JTextArea implements JPConfigurable {
         this(text, null);
     }
 
-    @Deprecated
     public JPTextArea(String text, Integer maxLength) {
         super(text);
         setLineWrap(true);

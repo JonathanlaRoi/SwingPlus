@@ -4,30 +4,22 @@ import org.bigfoot.swingplus.configurable.components.text.JPFormats;
 
 public class JPFormLongField extends JPFormNumberField<Long> {
 	public JPFormLongField(String id){
-		super(id, null, false, null);
+		super(id, null, null);
 		this.setFormat(JPFormats.ONLY_NUMBERS);
 	}
 
-	@Deprecated
 	public JPFormLongField(String id, Integer maxLength){
-		super(id, null, maxLength!=null, maxLength);
+		super(id, null, maxLength);
 		this.setFormat(JPFormats.ONLY_NUMBERS);
 	}
 	
 	public JPFormLongField(String id, Long number){
-		super(id, number, false, null);
+		super(id, number, null);
 		this.setFormat(JPFormats.ONLY_NUMBERS);
 	}
 
-	@Deprecated
 	public JPFormLongField(String id, Long number, Integer maxLength){
-		super(id, number, maxLength!=null, maxLength);
-		this.setFormat(JPFormats.ONLY_NUMBERS);
-	}
-
-	@Deprecated
-	public JPFormLongField(String id, Long number, boolean enforceLimit, Integer maxLength){
-		super(id, number, enforceLimit && maxLength!=null, maxLength);
+		super(id, number, maxLength);
 		this.setFormat(JPFormats.ONLY_NUMBERS);
 	}
 

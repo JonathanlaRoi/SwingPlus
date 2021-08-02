@@ -19,30 +19,22 @@ public class JPFormTextArea extends JPTextArea implements JPFormComponent<String
 	private Border defaultBorder = this.getBorder();
 	
 	public JPFormTextArea(String id){
-		super(null, false, null);
+		super(null, null);
 		setId(id);
 	}
 
-	@Deprecated
 	public JPFormTextArea(String id, Integer maxLength){
-		super(null, maxLength!=null, maxLength);
+		super(null, maxLength);
 		setId(id);
 	}
 	
 	public JPFormTextArea(String id, String text){
-		super(text, false, null);
+		super(text, null);
 		setId(id);
 	}
 
-	@Deprecated
 	public JPFormTextArea(String id, String text, Integer maxLength){
-		super(text, maxLength!=null, maxLength);
-		setId(id);
-	}
-
-	@Deprecated
-	public JPFormTextArea(String id, String text, boolean enforceLimit, Integer maxLength){
-		super(text, enforceLimit && maxLength!=null, maxLength);
+		super(text, maxLength);
 		setId(id);
 	}
 

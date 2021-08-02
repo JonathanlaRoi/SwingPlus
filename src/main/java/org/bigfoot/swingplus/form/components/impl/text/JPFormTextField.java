@@ -16,33 +16,25 @@ public class JPFormTextField extends JPTextField implements JPFormComponent<Stri
 	
 	private boolean update = true;
 	
-	private Border defaultBorder = this.getBorder();
+	private final Border defaultBorder = this.getBorder();
 	
 	public JPFormTextField(String id){
-		super(null, false, null);
+		super(null, null);
 		setId(id);
 	}
 
-	@Deprecated
 	public JPFormTextField(String id, Integer maxLength){
-		super(null, maxLength!=null, maxLength);
+		super(null, maxLength);
 		setId(id);
 	}
 	
 	public JPFormTextField(String id, String text){
-		super(text, false, null);
+		super(text, null);
 		setId(id);
 	}
 
-	@Deprecated
 	public JPFormTextField(String id, String text, Integer maxLength){
-		super(text, maxLength!=null, maxLength);
-		setId(id);
-	}
-
-	@Deprecated
-	public JPFormTextField(String id, String text, boolean enforceLimit, Integer maxLength){
-		super(text, enforceLimit && maxLength!=null, maxLength);
+		super(text, maxLength);
 		setId(id);
 	}
 

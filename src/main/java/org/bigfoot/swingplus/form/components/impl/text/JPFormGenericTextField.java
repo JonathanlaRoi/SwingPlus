@@ -16,33 +16,25 @@ public abstract class JPFormGenericTextField<T> extends JPTextField implements J
 	
 	private boolean updatable = true;
 	
-	private Border defaultBorder = this.getBorder();
+	private final Border defaultBorder = this.getBorder();
 	
 	public JPFormGenericTextField(String id){
-		super(null, false, null);
+		super(null, null);
 		setId(id);
 	}
 
-	@Deprecated
 	public JPFormGenericTextField(String id, Integer maxLength){
-		super(null, maxLength!=null, maxLength);
+		super(null, maxLength);
 		setId(id);
 	}
 	
 	public JPFormGenericTextField(String id, String text){
-		super(text, false, null);
+		super(text, null);
 		setId(id);
 	}
 
-	@Deprecated
 	public JPFormGenericTextField(String id, String text, Integer maxLength){
-		super(text, maxLength!=null, maxLength);
-		setId(id);
-	}
-
-	@Deprecated
-	public JPFormGenericTextField(String id, String text, boolean enforceLimit, Integer maxLength){
-		super(text, enforceLimit && maxLength!=null, maxLength);
+		super(text, maxLength);
 		setId(id);
 	}
 
