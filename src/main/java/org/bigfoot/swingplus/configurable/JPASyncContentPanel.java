@@ -47,9 +47,7 @@ public class JPASyncContentPanel<TYPE extends Component> extends JPPanel {
     private void init() {
         this.setLayout(new BorderLayout());
         lblComp = new JLabel(icon, SwingConstants.CENTER);
-        if (label != null) {
-            lblComp.setText(label);
-        }
+        lblComp.setText(label);
         add(lblComp, BorderLayout.CENTER);
     }
 
@@ -97,16 +95,16 @@ public class JPASyncContentPanel<TYPE extends Component> extends JPPanel {
                     JPASyncContentPanel.this.revalidate();
                 } catch (RuntimeException | InterruptedException | ExecutionException e) {
                     log.error("", e);
-                    getExceptionComponent(e);
+                    showExceptionComponent(e);
                 }
             }
         };
     }
 
-    private void getExceptionComponent(Exception exception) {
+    private void showExceptionComponent(Exception exception) {
         JComponent errorComp = getErrorComponent(exception);
         if (errorComp == null) {
-            errorComp = new JLabel("Exception:" + exception.getClass(), SwingConstants.CENTER);
+            errorComp = new JLabel("Exception: " + exception.getClass(), SwingConstants.CENTER);
         }
         JPASyncContentPanel.this.removeAll();
         JPASyncContentPanel.this.add(errorComp, BorderLayout.CENTER);

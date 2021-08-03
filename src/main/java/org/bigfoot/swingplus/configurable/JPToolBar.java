@@ -27,14 +27,6 @@ public class JPToolBar extends JToolBar implements JPContainer {
         }
     }
 
-    public void onConfigure() {
-        for (Component comp : this.getComponents()) {
-            if (comp instanceof JPConfigurable) {
-                ((JPConfigurable) comp).onConfigure();
-            }
-        }
-    }
-
     public void addMouseListener(JPLambdaPopupMouseListener adapter) {
         super.addMouseListener(adapter);
     }
