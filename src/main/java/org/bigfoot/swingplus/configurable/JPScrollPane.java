@@ -20,17 +20,17 @@ public class JPScrollPane extends JScrollPane implements JPContainer, JPListener
     }
 
     public JPScrollPane(Component view) {
-        this(view, VERTICAL_SCROLLBAR_AS_NEEDED, HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        super(view);
         JPEventManager.addListener(this);
     }
 
     public JPScrollPane(int vsbPolicy, int hsbPolicy) {
-        this(null, vsbPolicy, hsbPolicy);
+        super(vsbPolicy, hsbPolicy);
         JPEventManager.addListener(this);
     }
 
     public JPScrollPane() {
-        this(null, VERTICAL_SCROLLBAR_AS_NEEDED, HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        super();
         JPEventManager.addListener(this);
     }
 }
