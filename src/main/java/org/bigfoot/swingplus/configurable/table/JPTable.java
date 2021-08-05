@@ -61,7 +61,7 @@ public class JPTable<MODEL> extends JTable implements JPConfigurable {
         if (dataProvider != null) {
             return dataProvider.getPageable().getPage() == 1;
         } else {
-            throw new RuntimeException("JPTable#setPage is only supported when you use a JPDataProvider");
+            throw new RuntimeException("JPTable#isAtFirstPage is only supported when you use a JPDataProvider");
         }
     }
 
@@ -69,7 +69,7 @@ public class JPTable<MODEL> extends JTable implements JPConfigurable {
         if (dataProvider != null) {
             return dataProvider.getPageable().getPage() == dataProvider.getPageable().getMaxPage();
         } else {
-            throw new RuntimeException("JPTable#setPage is only supported when you use a JPDataProvider");
+            throw new RuntimeException("JPTable#isAtLastPage is only supported when you use a JPDataProvider");
         }
     }
 
