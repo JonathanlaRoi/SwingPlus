@@ -8,8 +8,6 @@ import org.bigfoot.swingplus.configurable.tablepanel.components.JPPageable;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -34,8 +32,8 @@ public abstract class JPSortableDataProvider<MODEL, SORT> extends JPTableDataPro
     public final List<MODEL> getRowsForPage(JPPageable pageable) {
         if (getTable().getRowSorter() != null) {
             sortProperty = getSortOrderFromTable();
-        } else if (getSortFromCustomSource() != null) {
-            sortProperty = getSortFromCustomSource();
+        } else if (getSortFromOtherSource() != null) {
+            sortProperty = getSortFromOtherSource();
         }
         return getRowsForPage(pageable, sortProperty);
     }
@@ -56,7 +54,7 @@ public abstract class JPSortableDataProvider<MODEL, SORT> extends JPTableDataPro
      * If you don't use the default jtable sorter, then you can use this method to get a custom sort from another source
      * @return {@link List<JPSort<SORT>>}
      */
-    public JPSort<SORT> getSortFromCustomSource() {
+    public JPSort<SORT> getSortFromOtherSource() {
         return null;
     }
 
