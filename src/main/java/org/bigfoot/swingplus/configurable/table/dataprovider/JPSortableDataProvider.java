@@ -18,7 +18,7 @@ import java.util.List;
  */
 public abstract class JPSortableDataProvider<MODEL, SORT> extends JPTableDataProvider<MODEL> {
 
-    private List<JPSort<SORT>> sortProperties;
+    private JPSort<SORT> sortProperty;
 
     public JPSortableDataProvider(Integer pageSize, List<JPTableColumn<MODEL, ?, ?>> jpTableColumns) {
         this(pageSize, jpTableColumns, null, JPSortOrder.UNSORTED);
@@ -27,37 +27,28 @@ public abstract class JPSortableDataProvider<MODEL, SORT> extends JPTableDataPro
     public JPSortableDataProvider(Integer pageSize, List<JPTableColumn<MODEL, ?, ?>> jpTableColumns,
                                   @Nullable SORT sortProperty, @Nonnull JPSortOrder sortOrder) {
         super(pageSize, jpTableColumns);
-        if(sortProperty != null) {
-            this.sortProperties = new ArrayList<>(Collections.singletonList(new JPSort<>(sortProperty, sortOrder)));
-        } else {
-            this.sortProperties = new ArrayList<>();
-        }
-    }
-
-    public JPSortableDataProvider(Integer pageSize, List<JPTableColumn<MODEL, ?, ?>> jpTableColumns,
-                                  @Nonnull List<JPSort<SORT>> sortProperties) {
-        super(pageSize, jpTableColumns);
-        this.sortProperties = sortProperties;
+        this.sortProperty = new JPSort<>(sortProperty, sortOrder);
     }
 
     @Override
     public final List<MODEL> getRowsForPage(JPPageable pageable) {
         if (getTable().getRowSorter() != null) {
-            sortProperties = getSortOrderFromTable();
+            sortProperty = getSortOrderFromTable();
         } else if (getSortFromCustomSource() != null) {
-            sortProperties = getSortFromCustomSource();
+            sortProperty = getSortFromCustomSource();
         }
-        return getRowsForPage(pageable, sortProperties);
+        return getRowsForPage(pageable, sortProperty);
     }
 
-    private List<JPSort<SORT>> getSortOrderFromTable() {
-        List<JPSort<SORT>> sort = new ArrayList<>();
+    private JPSort<SORT> getSortOrderFromTable() {
+        JPSort<SORT> sort = null;
         List<? extends RowSorter.SortKey> sortKeys = getTable().getRowSorter().getSortKeys();
-        sortKeys.forEach(s -> {
+        for(RowSorter.SortKey s : sortKeys) {
             JPTableColumn<MODEL, ?, ?> col = getColumns().get(s.getColumn());
             JPSortOrder sortOrder = JPSortOrder.of(s.getSortOrder());
-            sort.add(new JPSort<SORT>((SORT) col.getSortProperty(), sortOrder));
-        });
+            sort = new JPSort<>((SORT) col.getSortProperty(), sortOrder);
+            break;
+        };
         return sort;
     }
 
@@ -65,9 +56,9 @@ public abstract class JPSortableDataProvider<MODEL, SORT> extends JPTableDataPro
      * If you don't use the default jtable sorter, then you can use this method to get a custom sort from another source
      * @return {@link List<JPSort<SORT>>}
      */
-    public List<JPSort<SORT>> getSortFromCustomSource() {
-        return new ArrayList<>();
+    public JPSort<SORT> getSortFromCustomSource() {
+        return null;
     }
 
-    public abstract List<MODEL> getRowsForPage(JPPageable pageable, List<JPSort<SORT>> sort);
+    public abstract List<MODEL> getRowsForPage(JPPageable pageable, JPSort<SORT> sort);
 }
