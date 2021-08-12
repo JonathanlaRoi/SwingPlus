@@ -15,7 +15,7 @@ SwingPlus is a library for Java Swing that adds several extra components and too
     <dependency>
         <groupId>com.github.JonathanlaRoi</groupId>
         <artifactId>SwingPlus</artifactId>
-        <version>v1.0.10-alpha</version>
+        <version>v1.0.11-alpha</version>
     </dependency>
 </dependencies>
 ```
