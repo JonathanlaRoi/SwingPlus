@@ -49,27 +49,6 @@ public abstract class JPTableDataProvider<MODEL> {
         JPTableModel<MODEL> model = new JPTableModel<>(result);
         model.setColumns(columns);
         table.setModel(model);
-        setTablePageUI(table);
-    }
-
-    protected void setTablePageUI(JPTable<MODEL> table) {
-        int col = 0;
-        //Voor de benodigde kolommen een editor toevoegen
-        for (JPTableColumn<MODEL, ?, ?> column : getColumns()) {
-            if (column.getTableCellRenderer() != null) {
-                table.getColumnModel().getColumn(col).setCellRenderer(column.getTableCellRenderer());
-            }
-            if (column.getTableCellEditor() != null) {
-                table.getColumnModel().getColumn(col).setCellEditor(column.getTableCellEditor());
-            }
-            if (column.getMinWidth() != null) {
-                table.getColumnModel().getColumn(col).setMinWidth(column.getMinWidth());
-            }
-            if (column.getMaxWidth() != null) {
-                table.getColumnModel().getColumn(col).setMaxWidth(column.getMaxWidth());
-            }
-            col++;
-        }
     }
 
     public abstract List<MODEL> getRowsForPage(JPPageable pageable);

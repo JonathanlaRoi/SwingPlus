@@ -3,6 +3,7 @@ package org.bigfoot.swingplus.configurable.table;
 import lombok.Getter;
 import lombok.Setter;
 import org.bigfoot.swingplus.configurable.JPConfigurable;
+import org.bigfoot.swingplus.configurable.table.columns.JPTableColumn;
 import org.bigfoot.swingplus.configurable.table.dataprovider.JPTableDataProvider;
 
 import javax.annotation.Nullable;
@@ -112,6 +113,7 @@ public class JPTable<MODEL> extends JTable implements JPConfigurable {
         } else if (dataModel != null) {
             try {
                 super.setModel((JPTableModel<MODEL>) dataModel);
+                adjustColumnModelBasedOnTableModel();
             } catch (ClassCastException ex) {
                 throw new IllegalArgumentException("Use JPTableModel!", ex);
             }
@@ -161,5 +163,28 @@ public class JPTable<MODEL> extends JTable implements JPConfigurable {
         }
 
         return super.getToolTipText(event);
+    }
+
+    private void adjustColumnModelBasedOnTableModel() {
+        if(getModel() instanceof JPTableModel) {
+            JPTableModel<MODEL> model = (JPTableModel<MODEL>) getModel();
+            int col = 0;
+            //Voor de benodigde kolommen een editor toevoegen
+            for (JPTableColumn<MODEL, ?, ?> column : model.getColumns()) {
+                if (column.getTableCellRenderer() != null) {
+                    getColumnModel().getColumn(col).setCellRenderer(column.getTableCellRenderer());
+                }
+                if (column.getTableCellEditor() != null) {
+                    getColumnModel().getColumn(col).setCellEditor(column.getTableCellEditor());
+                }
+                if (column.getMinWidth() != null) {
+                    getColumnModel().getColumn(col).setMinWidth(column.getMinWidth());
+                }
+                if (column.getMaxWidth() != null) {
+                    getColumnModel().getColumn(col).setMaxWidth(column.getMaxWidth());
+                }
+                col++;
+            }
+        }
     }
 }

@@ -46,7 +46,6 @@ public abstract class JPAsyncTableDataProvider<MODEL> extends JPTableDataProvide
                 }
                 model.setColumns(getColumns());
                 getTable().setModel(model);
-                setTablePageUI(getTable());
                 JPAsyncTableDataProvider.this.onDone(getTable());
             }
         }.execute();
