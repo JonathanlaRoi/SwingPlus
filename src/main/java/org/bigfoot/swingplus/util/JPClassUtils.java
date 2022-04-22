@@ -12,6 +12,13 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class JPClassUtils {
 
+    public static Class<?> getRealClassOfObject(Object obj) {
+        if (obj != null) {
+            return getRealClass(obj.getClass());
+        }
+        return null;
+    }
+
     public static Class<?> getRealClass(Class<?> clazz) {
         if (clazz == null) {
             return null;

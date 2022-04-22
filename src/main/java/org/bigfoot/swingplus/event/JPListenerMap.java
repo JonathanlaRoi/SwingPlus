@@ -1,17 +1,19 @@
 package org.bigfoot.swingplus.event;
 
 import lombok.extern.apachecommons.CommonsLog;
+import org.bigfoot.swingplus.util.JPClassUtils;
 
 import java.lang.invoke.MethodType;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @CommonsLog
 class JPListenerMap {
 
     private static final String respondMethodName = "respond";
 
-    private Class<? extends JPListener> type;
+    private final Class<? extends JPListener> type;
 
     private final List<JPListener> listeners = new ArrayList<>();
 
@@ -28,13 +30,13 @@ class JPListenerMap {
     }
 
     public void addListener(JPListener listener) {
-        if (listener != null && type.equals(listener.getClass()) && !listeners.contains(listener)) {
+        if (listener != null && type.equals(JPClassUtils.getRealClassOfObject(listener)) && !listeners.contains(listener)) {
             listeners.add(listener);
         }
     }
 
     public void removeListener(JPListener listener) {
-        if (listener != null && type.equals(listener.getClass()) && listeners.contains(listener)) {
+        if (listener != null && type.equals(JPClassUtils.getRealClassOfObject(listener))) {
             listeners.remove(listener);
         }
     }
@@ -50,7 +52,7 @@ class JPListenerMap {
     }
 
     public void clean() {
-        listeners.removeIf(l -> l == null);
+        listeners.removeIf(Objects::isNull);
     }
 
     @Override

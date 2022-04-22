@@ -1,5 +1,7 @@
 package org.bigfoot.swingplus.event;
 
+import org.bigfoot.swingplus.util.JPClassUtils;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,7 +21,7 @@ class JPEventMap {
     }
 
     public void addListener(JPListener listener) {
-        JPListenerMap map = new JPListenerMap(listener.getClass());
+        JPListenerMap map = new JPListenerMap((Class<? extends JPListener>) JPClassUtils.getRealClassOfObject(listener));
         int index = -1;
         if (listenerMaps.contains(map)) {
             index = listenerMaps.indexOf(map);
@@ -36,7 +38,7 @@ class JPEventMap {
     }
 
     public void removeListener(JPListener listener) {
-        JPListenerMap map = new JPListenerMap(listener.getClass());
+        JPListenerMap map = new JPListenerMap((Class<? extends JPListener>) JPClassUtils.getRealClassOfObject(listener));
         if (listenerMaps.contains(map)) {
             JPListenerMap curMap = listenerMaps.get(listenerMaps.indexOf(map));
             curMap.removeListener(listener);

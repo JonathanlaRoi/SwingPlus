@@ -25,18 +25,18 @@ class JPEventWorker extends SwingWorker<List<JPRespondMethod>, Void> {
     protected List<JPRespondMethod> doInBackground() throws Exception {
         List<JPRespondMethod> respondMethods = new ArrayList<>();
         for (JPListenerMap map : listeners) {
-//            boolean typedRespond = map.containsEventRespondMethod(event.getClass());
-//            if (typedRespond) {
-            for (JPListener listener : map.getListeners()) {
-                if (listener != null) {
-                    respondMethods.add(new JPRespondMethod(listener, event, event.getClass()));
-                } else {
-                    log.error("Listener is null");
+            boolean typedRespond = map.containsEventRespondMethod(event.getClass());
+            if (typedRespond) {
+                for (JPListener listener : map.getListeners()) {
+                    if (listener != null) {
+                        respondMethods.add(new JPRespondMethod(listener, event, event.getClass()));
+                    } else {
+                        log.error("Listener is null");
+                    }
                 }
+            } else {
+                log.error("Can't find respond method for " + event.getClass());
             }
-//            } else {
-//                log.error("Can't find respond method for " + event.getClass());
-//            }
         }
         return respondMethods;
     }
