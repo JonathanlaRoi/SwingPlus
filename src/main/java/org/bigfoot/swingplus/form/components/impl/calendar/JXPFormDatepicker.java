@@ -11,6 +11,8 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
+ * Form variant of the {@link JXPDatePicker} which is based on the {@link org.jdesktop.swingx.JXDatePicker} from swingx
+ *
  * @author Jonathan la Roi
  * @since 30/07/2021
  */

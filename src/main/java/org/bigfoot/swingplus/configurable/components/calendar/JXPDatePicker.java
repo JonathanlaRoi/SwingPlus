@@ -9,6 +9,8 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
+ * A SwingPlus version of the {@link JXDatePicker} from swingx with a few small additions for using {@link LocalDate}
+ *
  * @author Jonathan la Roi
  * @since 30/07/2021
  */
@@ -44,6 +46,18 @@ public class JXPDatePicker extends JXDatePicker implements JPConfigurable {
 
     public LocalDate getLocalDate() {
         return JPDateUtils.mapUtilDateToLocalDate(getDate());
+    }
+
+    public void setLowerBound(LocalDate date) {
+        if (date != null) {
+            getMonthView().setLowerBound(java.sql.Date.valueOf(date));
+        }
+    }
+
+    public void setUpperBound(LocalDate date) {
+        if (date != null) {
+            getMonthView().setUpperBound(java.sql.Date.valueOf(date));
+        }
     }
 
 }
