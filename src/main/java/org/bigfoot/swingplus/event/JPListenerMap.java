@@ -3,7 +3,6 @@ package org.bigfoot.swingplus.event;
 import lombok.extern.apachecommons.CommonsLog;
 import org.bigfoot.swingplus.util.JPClassUtils;
 
-import java.lang.invoke.MethodType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -44,8 +43,6 @@ class JPListenerMap {
     public boolean containsEventRespondMethod(Class<? extends JPEvent> eventType) {
         try {
             type.getMethod(respondMethodName, eventType);
-//            MethodType signature = MethodType.methodType(void.class, eventType);
-//            JPEventManager.caller.findVirtual(type, respondMethodName, signature);
             return true;
         } catch (NoSuchMethodException ex) {
             return false;

@@ -3,12 +3,10 @@ package org.bigfoot.swingplus.event;
 import lombok.extern.apachecommons.CommonsLog;
 import org.reflections.Reflections;
 
-import java.lang.invoke.MethodHandles;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
 /**
@@ -19,8 +17,6 @@ import java.util.stream.Collectors;
  */
 @CommonsLog
 public class JPEventManager {
-
-    protected static final MethodHandles.Lookup caller = MethodHandles.lookup();
 
     private static JPEventManager instance;
 
