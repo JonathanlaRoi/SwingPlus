@@ -43,10 +43,11 @@ class JPListenerMap {
 
     public boolean containsEventRespondMethod(Class<? extends JPEvent> eventType) {
         try {
-            MethodType signature = MethodType.methodType(void.class, eventType);
-            JPEventManager.caller.findVirtual(type, respondMethodName, signature);
+            type.getClass().getMethod(respondMethodName, eventType);
+//            MethodType signature = MethodType.methodType(void.class, eventType);
+//            JPEventManager.caller.findVirtual(type, respondMethodName, signature);
             return true;
-        } catch (NoSuchMethodException | IllegalAccessException ex) {
+        } catch (NoSuchMethodException ex) {
             return false;
         }
     }
