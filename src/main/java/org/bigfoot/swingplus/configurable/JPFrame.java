@@ -16,22 +16,22 @@ public class JPFrame extends JFrame implements JPContainer, JPListener, JPResiza
 
     public JPFrame() {
         super();
-        JPEventManager.addListener(this);
+        register();
     }
 
     public JPFrame(GraphicsConfiguration arg0) {
         super(arg0);
-        JPEventManager.addListener(this);
+        register();
     }
 
     public JPFrame(String arg0) {
         super(arg0);
-        JPEventManager.addListener(this);
+        register();
     }
 
     public JPFrame(String arg0, GraphicsConfiguration arg1) {
         super(arg0, arg1);
-        JPEventManager.addListener(this);
+        register();
     }
 
     @Override

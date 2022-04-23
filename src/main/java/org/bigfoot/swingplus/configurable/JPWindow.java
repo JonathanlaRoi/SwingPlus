@@ -18,12 +18,12 @@ public class JPWindow extends JWindow implements JPListener, JPContainer, JPResi
 
     public JPWindow() {
         super();
-        JPEventManager.addListener(this);
+        register();
     }
 
     public JPWindow(GraphicsConfiguration arg0) {
         super(arg0);
-        JPEventManager.addListener(this);
+        register();
     }
 
     @Override

@@ -16,21 +16,21 @@ public class JPScrollPane extends JScrollPane implements JPContainer, JPListener
 
     public JPScrollPane(Component view, int vsbPolicy, int hsbPolicy) {
         super(view, vsbPolicy, hsbPolicy);
-        JPEventManager.addListener(this);
+        register();
     }
 
     public JPScrollPane(Component view) {
         super(view);
-        JPEventManager.addListener(this);
+        register();
     }
 
     public JPScrollPane(int vsbPolicy, int hsbPolicy) {
         super(vsbPolicy, hsbPolicy);
-        JPEventManager.addListener(this);
+        register();
     }
 
     public JPScrollPane() {
         super();
-        JPEventManager.addListener(this);
+        register();
     }
 }

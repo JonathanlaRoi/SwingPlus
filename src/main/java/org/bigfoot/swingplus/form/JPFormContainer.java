@@ -7,9 +7,20 @@ import java.util.List;
 import javax.swing.JScrollPane;
 
 import org.bigfoot.swingplus.configurable.JPContainer;
+import org.bigfoot.swingplus.form.components.JPEditable;
 import org.bigfoot.swingplus.form.components.JPFormComponent;
 
-public interface JPFormContainer extends JPContainer {
+public interface JPFormContainer extends JPContainer, JPEditable {
+
+    default void setEditable(boolean editable) {
+        JPFormHelper.setEditable(editable, this);
+    }
+
+    default boolean isEditable() {
+        return isEnabled();
+    }
+
+    boolean isEnabled();
 
     Component[] getComponents();
 
@@ -25,7 +36,7 @@ public interface JPFormContainer extends JPContainer {
                 formComponents.add((JPFormComponent<?>) comp);
             }
             if (comp instanceof JPFormContainer) {
-				formComponents.addAll(((JPFormContainer) comp).getFormComponents());
+                formComponents.addAll(((JPFormContainer) comp).getFormComponents());
             }
         }
         return formComponents;

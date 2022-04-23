@@ -11,7 +11,7 @@ public class JPTabbedPane extends JTabbedPane implements JPContainer, JPListener
 
     public JPTabbedPane() {
         super();
-        JPEventManager.addListener(this);
+        register();
     }
 
     public void closeCurrent() {

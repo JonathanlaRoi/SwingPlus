@@ -1,5 +1,6 @@
 package org.bigfoot.swingplus.form;
 
+import java.awt.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -7,8 +8,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import lombok.extern.apachecommons.CommonsLog;
+import org.bigfoot.swingplus.configurable.components.calendar.JPDatepickerTextField;
+import org.bigfoot.swingplus.form.components.JPEditable;
+import org.bigfoot.swingplus.form.components.JPFormComponent;
+import org.bigfoot.swingplus.form.components.JPReadOnly;
 import org.bigfoot.swingplus.form.exception.JPFormException;
 import org.reflections.Reflections;
+
+import javax.swing.text.JTextComponent;
 
 @CommonsLog
 public class JPFormHelper {
@@ -150,5 +157,22 @@ public class JPFormHelper {
 			}
 		}
 		return sub;
+	}
+
+	public static void setEditable(boolean editable, JPFormContainer container) {
+		List<JPFormComponent<?>> components = container.getFormComponents();
+		for (JPFormComponent<?> comp : components) {
+			if (comp instanceof Component) {
+				if (comp instanceof JTextComponent && !(comp instanceof JPDatepickerTextField)) {
+					((JTextComponent) comp).setEditable(editable);
+				} else if (comp instanceof JPEditable) {
+					((JPEditable) comp).setEditable(editable);
+				} else if (comp instanceof JPFormPanel<?>) {
+					((JPFormPanel<?>) comp).setEditable(editable);
+				} else if (!(comp instanceof JPReadOnly)) {
+					((Component) comp).setEnabled(editable);
+				}
+			}
+		}
 	}
 }

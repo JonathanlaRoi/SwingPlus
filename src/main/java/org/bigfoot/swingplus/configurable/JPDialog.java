@@ -16,86 +16,82 @@ public class JPDialog extends JDialog implements JPContainer, JPListener, JPResi
 
     public JPDialog() {
         super();
-        addAsListener();
+        register();
     }
 
     public JPDialog(Dialog owner) {
         super(owner);
-        addAsListener();
+        register();
     }
 
     public JPDialog(Dialog owner, boolean modal) {
         super(owner, modal);
-        addAsListener();
+        register();
     }
 
     public JPDialog(Dialog owner, String title) {
         super(owner, title);
-        addAsListener();
+        register();
     }
 
     public JPDialog(Dialog owner, String title, boolean modal) {
         super(owner, title, modal);
-        addAsListener();
+        register();
     }
 
     public JPDialog(Dialog owner, String title, boolean modal, GraphicsConfiguration gc) {
         super(owner, title, modal, gc);
-        addAsListener();
+        register();
     }
 
     public JPDialog(Frame owner) {
         super(owner);
-        addAsListener();
+        register();
     }
 
     public JPDialog(Frame owner, boolean modal) {
         super(owner, modal);
-        addAsListener();
+        register();
     }
 
     public JPDialog(Frame owner, String title) {
         super(owner, title);
-        addAsListener();
+        register();
     }
 
     public JPDialog(Frame owner, String title, boolean modal) {
         super(owner, title, modal);
-        addAsListener();
+        register();
     }
 
     public JPDialog(Frame owner, String title, boolean modal, GraphicsConfiguration gc) {
         super(owner, title, modal, gc);
-        addAsListener();
+        register();
     }
 
     public JPDialog(Window owner) {
         super(owner);
-        addAsListener();
+        register();
     }
 
     public JPDialog(Window owner, ModalityType modalityType) {
         super(owner, modalityType);
-        addAsListener();
+        register();
     }
 
     public JPDialog(Window owner, String title) {
         super(owner, title);
-        addAsListener();
+        register();
     }
 
     public JPDialog(Window owner, String title, ModalityType modalityType) {
         super(owner, title, modalityType);
-        addAsListener();
+        register();
     }
 
     public JPDialog(Window owner, String title, ModalityType modalityType, GraphicsConfiguration gc) {
         super(owner, title, modalityType, gc);
-        addAsListener();
-    }
-
-    private void addAsListener() {
-        JPEventManager.addListener(this);
+        register();
     }
 
     @Override

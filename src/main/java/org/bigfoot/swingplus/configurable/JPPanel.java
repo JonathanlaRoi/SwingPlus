@@ -18,22 +18,22 @@ public class JPPanel extends JPanel implements JPContainer, JPListener {
 
     public JPPanel(LayoutManager arg0, boolean arg1) {
         super(arg0, arg1);
-        JPEventManager.addListener(this);
+        register();
     }
 
     public JPPanel(LayoutManager arg0) {
         super(arg0);
-        JPEventManager.addListener(this);
+        register();
     }
 
     public JPPanel(boolean arg0) {
         super(arg0);
-        JPEventManager.addListener(this);
+        register();
     }
 
     public JPPanel() {
         super();
-        JPEventManager.addListener(this);
+        register();
     }
 
     public void addMouseListener(JPLambdaPopupMouseListener adapter) {
