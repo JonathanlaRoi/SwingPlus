@@ -1,7 +1,10 @@
 package org.bigfoot.swingplus.event;
 
+import lombok.extern.apachecommons.CommonsLog;
+
 import java.lang.reflect.InvocationTargetException;
 
+@CommonsLog
 class JPRespondMethod {
 
     private static final String methodName = "respond";
@@ -20,7 +23,13 @@ class JPRespondMethod {
 
     protected void execute() throws RuntimeException {
         try {
+            if (JPEventManager.isDebugLogging()) {
+                log.info(String.format("Sending event to %s", listener));
+            }
             listener.getClass().getMethod(methodName, eventType).invoke(listener, event);
+            if (JPEventManager.isDebugLogging()) {
+                log.info(String.format("Event received by %s", listener));
+            }
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }

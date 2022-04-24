@@ -44,6 +44,9 @@ class JPEventWorker extends SwingWorker<List<JPRespondMethod>, Void> {
     @Override
     protected void done() {
         try {
+            if (JPEventManager.isDebugLogging()) {
+                log.info(String.format("Sending event %s", event.getClass()));
+            }
             for (JPRespondMethod rm : get()) {
                 rm.execute();
             }
