@@ -107,9 +107,6 @@ public class JPEventManager {
     public static void send(JPEvent event) {
         if (event != null) {
             JPEventMap map = getInstance().eventMaps.get(event.getClass());
-            if (isDebugLogging()) {
-                log.info("Sending event " + event.getClass() + " to listeners");
-            }
             getTypedWorker(event, map.getListenerMaps()).execute();
         }
     }
