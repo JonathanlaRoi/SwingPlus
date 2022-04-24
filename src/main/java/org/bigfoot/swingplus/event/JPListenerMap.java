@@ -3,6 +3,8 @@ package org.bigfoot.swingplus.event;
 import lombok.extern.apachecommons.CommonsLog;
 import org.bigfoot.swingplus.util.JPClassUtils;
 
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -14,7 +16,7 @@ class JPListenerMap {
 
     private final Class<? extends JPListener> type;
 
-    private final List<JPListener> listeners = new ArrayList<>();
+    private final List<WeakReference<JPListener>> listeners = new ArrayList<>();
 
     protected JPListenerMap(Class<? extends JPListener> type) {
         this.type = type;
@@ -24,20 +26,24 @@ class JPListenerMap {
         return type;
     }
 
-    public List<JPListener> getListeners() {
+    public List<WeakReference<JPListener>> getListeners() {
         return listeners;
     }
 
     public void addListener(JPListener listener) {
-        if (listener != null && type.equals(JPClassUtils.getRealClassOfObject(listener)) && !listeners.contains(listener)) {
-            listeners.add(listener);
+        if (listener != null && type.equals(JPClassUtils.getRealClassOfObject(listener)) && !containsListener(listener)) {
+            listeners.add(new WeakReference<>(listener));
         }
     }
 
     public void removeListener(JPListener listener) {
         if (listener != null && type.equals(JPClassUtils.getRealClassOfObject(listener))) {
-            listeners.remove(listener);
+            listeners.removeIf(weakReference -> Objects.equals(weakReference.get(), listener));
         }
+    }
+
+    public boolean containsListener(JPListener listener) {
+        return listeners.stream().anyMatch(weakReference -> Objects.equals(weakReference.get(), listener));
     }
 
     public boolean containsEventRespondMethod(Class<? extends JPEvent> eventType) {

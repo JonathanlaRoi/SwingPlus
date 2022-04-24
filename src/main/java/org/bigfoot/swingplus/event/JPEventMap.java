@@ -27,7 +27,7 @@ class JPEventMap {
             index = listenerMaps.indexOf(map);
             map = listenerMaps.get(index);
         }
-        if (!map.getListeners().contains(listener) && map.containsEventRespondMethod(type)) {
+        if (!map.containsListener(listener) && map.containsEventRespondMethod(type)) {
             map.addListener(listener);
             if (index != -1) {
                 listenerMaps.set(index, map);
@@ -43,7 +43,7 @@ class JPEventMap {
             JPListenerMap curMap = listenerMaps.get(listenerMaps.indexOf(map));
             curMap.removeListener(listener);
             if (curMap.getListeners().size() == 0) {
-                listenerMaps.remove(listenerMaps.indexOf(curMap));
+                listenerMaps.remove(curMap);
             }
         }
     }
@@ -53,7 +53,7 @@ class JPEventMap {
     }
 
     public void clean() {
-        listenerMaps.forEach(l -> l.clean());
+        listenerMaps.forEach(JPListenerMap::clean);
     }
 
     @Override
