@@ -20,7 +20,7 @@ class JPListenerMap {
 
     private final Class<? extends JPListener> type;
 
-    private final List<WeakReference<JPListener>> listeners = new ArrayList<>();
+    private final Map<JPListener, JPListener> listeners = new WeakHashMap<>();
 
     protected JPListenerMap(Class<? extends JPListener> type) {
         this.type = type;
@@ -31,23 +31,23 @@ class JPListenerMap {
     }
 
     public Collection<JPListener> getListeners() {
-        return listeners.stream().map(Reference::get).collect(Collectors.toList());
+        return listeners.values();
     }
 
     public void addListener(JPListener listener) {
         if (listener != null && type.equals(JPClassUtils.getRealClassOfObject(listener)) && !containsListener(listener)) {
-            listeners.add(new WeakReference<>(listener));
+            listeners.put(listener, listener);
         }
     }
 
     public void removeListener(JPListener listener) {
         if (listener != null && type.equals(JPClassUtils.getRealClassOfObject(listener))) {
-            listeners.removeIf(wr -> Objects.equals(wr.get(), listener));
+            listeners.remove(listener);
         }
     }
 
     public boolean containsListener(JPListener listener) {
-        return listeners.stream().anyMatch(wr -> Objects.equals(wr.get(), listener));
+        return listeners.containsKey(listener);
     }
 
     public boolean containsEventRespondMethod(Class<? extends JPEvent> eventType) {
@@ -61,7 +61,6 @@ class JPListenerMap {
 
     public void clean() {
         System.gc();
-        listeners.removeIf(wr -> wr.get() == null);
     }
 
     @Override
