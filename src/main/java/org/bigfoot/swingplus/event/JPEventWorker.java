@@ -3,7 +3,6 @@ package org.bigfoot.swingplus.event;
 import lombok.extern.apachecommons.CommonsLog;
 
 import javax.swing.*;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -28,9 +27,9 @@ class JPEventWorker extends SwingWorker<List<JPRespondMethod>, Void> {
         for (JPListenerMap map : listeners) {
             boolean typedRespond = map.containsEventRespondMethod(event.getClass());
             if (typedRespond) {
-                for (WeakReference<JPListener> listener : map.getListeners()) {
+                for (JPListener listener : map.getListeners()) {
                     if (listener != null) {
-                        respondMethods.add(new JPRespondMethod(listener.get(), event, event.getClass()));
+                        respondMethods.add(new JPRespondMethod(listener, event, event.getClass()));
                     } else if (JPEventManager.isDebugLogging()) {
                         log.error("Listener is null");
                     }
