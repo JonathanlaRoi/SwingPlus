@@ -44,11 +44,14 @@ class JPEventWorker extends SwingWorker<List<JPRespondMethod>, Void> {
     @Override
     protected void done() {
         try {
-            if (JPEventManager.isDebugLogging()) {
-                log.info(String.format("Sending event %s", event.getClass()));
-            }
-            for (JPRespondMethod rm : get()) {
-                rm.execute();
+            List<JPRespondMethod> respondMethods = get();
+            if (respondMethods != null && !respondMethods.isEmpty()) {
+                if (JPEventManager.isDebugLogging()) {
+                    log.info(String.format("Sending event %s", event.getClass()));
+                }
+                for (JPRespondMethod rm : get()) {
+                    rm.execute();
+                }
             }
         } catch (InterruptedException | ExecutionException |
                 IllegalArgumentException | SecurityException e) {
