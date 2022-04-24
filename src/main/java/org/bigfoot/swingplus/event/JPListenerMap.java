@@ -20,7 +20,7 @@ class JPListenerMap {
 
     private final Class<? extends JPListener> type;
 
-    private final Map<JPListener, JPListener> listeners = new WeakHashMap<>();
+    private final Map<JPListener, Void> listeners = new WeakHashMap<>();
 
     protected JPListenerMap(Class<? extends JPListener> type) {
         this.type = type;
@@ -31,12 +31,12 @@ class JPListenerMap {
     }
 
     public Collection<JPListener> getListeners() {
-        return listeners.values();
+        return listeners.keySet();
     }
 
     public void addListener(JPListener listener) {
         if (listener != null && type.equals(JPClassUtils.getRealClassOfObject(listener)) && !containsListener(listener)) {
-            listeners.put(listener, listener);
+            listeners.put(listener, null);
         }
     }
 
