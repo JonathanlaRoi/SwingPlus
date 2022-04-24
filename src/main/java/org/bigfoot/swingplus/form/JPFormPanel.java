@@ -165,6 +165,11 @@ public class JPFormPanel<T> extends JPModeledPanel<T> implements JPFormComponent
         }
     }
 
+    @Override
+    public boolean isEditable() {
+        return editable;
+    }
+
     @SuppressWarnings("unchecked")
     @Override
     public void setComponentValue(T value) {

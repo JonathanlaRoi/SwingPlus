@@ -1,5 +1,7 @@
 package org.bigfoot.swingplus.event;
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.apachecommons.CommonsLog;
 import org.reflections.Reflections;
 
@@ -22,6 +24,8 @@ public class JPEventManager {
 
     private final Map<Class<? extends JPEvent>, JPEventMap> eventMaps;
 
+    private boolean debugLogging = false;
+
     private JPEventManager() {
         eventMaps = new ConcurrentHashMap<>();
     }
@@ -31,6 +35,14 @@ public class JPEventManager {
             instance = new JPEventManager();
         }
         return instance;
+    }
+
+    public static void setDebugLogging(boolean debugLogging) {
+        instance.debugLogging = debugLogging;
+    }
+
+    public static boolean isDebugLogging() {
+        return instance.debugLogging;
     }
 
     public static void autoRegister() {
@@ -95,7 +107,9 @@ public class JPEventManager {
     public static void send(JPEvent event) {
         if (event != null) {
             JPEventMap map = getInstance().eventMaps.get(event.getClass());
-            log.info("Sending event " + event.getClass() + " to listeners");
+            if (isDebugLogging()) {
+                log.info("Sending event " + event.getClass() + " to listeners");
+            }
             getTypedWorker(event, map.getListenerMaps()).execute();
         }
     }

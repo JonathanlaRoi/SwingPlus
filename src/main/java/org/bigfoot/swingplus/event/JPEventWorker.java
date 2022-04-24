@@ -30,11 +30,11 @@ class JPEventWorker extends SwingWorker<List<JPRespondMethod>, Void> {
                 for (JPListener listener : map.getListeners()) {
                     if (listener != null) {
                         respondMethods.add(new JPRespondMethod(listener, event, event.getClass()));
-                    } else {
+                    } else if (JPEventManager.isDebugLogging()) {
                         log.error("Listener is null");
                     }
                 }
-            } else {
+            } else if (JPEventManager.isDebugLogging()) {
                 log.error("Can't find respond method for " + event.getClass());
             }
         }
