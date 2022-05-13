@@ -1,7 +1,6 @@
 package org.bigfoot.swingplus.configurable;
 
 import lombok.extern.apachecommons.CommonsLog;
-import org.bigfoot.swingplus.event.JPEventManager;
 import org.bigfoot.swingplus.event.JPListener;
 
 import javax.swing.*;
@@ -16,87 +15,87 @@ public class JPDialog extends JDialog implements JPContainer, JPListener, JPResi
 
     public JPDialog() {
         super();
-        register();
+        subscribe();
     }
 
     public JPDialog(Dialog owner) {
         super(owner);
-        register();
+        subscribe();
     }
 
     public JPDialog(Dialog owner, boolean modal) {
         super(owner, modal);
-        register();
+        subscribe();
     }
 
     public JPDialog(Dialog owner, String title) {
         super(owner, title);
-        register();
+        subscribe();
     }
 
     public JPDialog(Dialog owner, String title, boolean modal) {
         super(owner, title, modal);
-        register();
+        subscribe();
     }
 
     public JPDialog(Dialog owner, String title, boolean modal, GraphicsConfiguration gc) {
         super(owner, title, modal, gc);
-        register();
+        subscribe();
     }
 
     public JPDialog(Frame owner) {
         super(owner);
-        register();
+        subscribe();
     }
 
     public JPDialog(Frame owner, boolean modal) {
         super(owner, modal);
-        register();
+        subscribe();
     }
 
     public JPDialog(Frame owner, String title) {
         super(owner, title);
-        register();
+        subscribe();
     }
 
     public JPDialog(Frame owner, String title, boolean modal) {
         super(owner, title, modal);
-        register();
+        subscribe();
     }
 
     public JPDialog(Frame owner, String title, boolean modal, GraphicsConfiguration gc) {
         super(owner, title, modal, gc);
-        register();
+        subscribe();
     }
 
     public JPDialog(Window owner) {
         super(owner);
-        register();
+        subscribe();
     }
 
     public JPDialog(Window owner, ModalityType modalityType) {
         super(owner, modalityType);
-        register();
+        subscribe();
     }
 
     public JPDialog(Window owner, String title) {
         super(owner, title);
-        register();
+        subscribe();
     }
 
     public JPDialog(Window owner, String title, ModalityType modalityType) {
         super(owner, title, modalityType);
-        register();
+        subscribe();
     }
 
     public JPDialog(Window owner, String title, ModalityType modalityType, GraphicsConfiguration gc) {
         super(owner, title, modalityType, gc);
-        register();
+        subscribe();
     }
 
     @Override
     public void dispose() {
-        JPEventManager.removeListener(this);
+        unsubscribe();
         super.dispose();
     }
 }

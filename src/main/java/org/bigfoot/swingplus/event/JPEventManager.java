@@ -1,7 +1,5 @@
 package org.bigfoot.swingplus.event;
 
-import lombok.Getter;
-import lombok.Setter;
 import lombok.extern.apachecommons.CommonsLog;
 import org.reflections.Reflections;
 
@@ -66,7 +64,7 @@ public class JPEventManager {
         }
     }
 
-    public static void addListener(JPListener listener) {
+    public static void subscribe(JPListener listener) {
         if (listener == null) {
             return;
         }
@@ -79,7 +77,7 @@ public class JPEventManager {
         }
     }
 
-    public static void removeListener(JPListener listener) {
+    public static void unsubscribe(JPListener listener) {
         if (listener == null) {
             return;
         }

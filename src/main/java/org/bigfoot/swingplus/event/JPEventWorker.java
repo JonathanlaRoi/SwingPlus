@@ -25,17 +25,19 @@ class JPEventWorker extends SwingWorker<List<JPRespondMethod>, Void> {
     protected List<JPRespondMethod> doInBackground() throws Exception {
         List<JPRespondMethod> respondMethods = new ArrayList<>();
         for (JPListenerMap map : listeners) {
-            boolean typedRespond = map.containsEventRespondMethod(event.getClass());
-            if (typedRespond) {
-                for (JPListener listener : map.getListeners()) {
-                    if (listener != null) {
-                        respondMethods.add(new JPRespondMethod(listener, event, event.getClass()));
-                    } else if (JPEventManager.isDebugLogging()) {
-                        log.error("Listener is null");
+            if (map.size() > 0) {
+                boolean typedRespond = map.containsEventRespondMethod(event.getClass());
+                if (typedRespond) {
+                    for (JPListener listener : map.getListeners()) {
+                        if (listener != null) {
+                            respondMethods.add(new JPRespondMethod(listener, event, event.getClass()));
+                        } else if (JPEventManager.isDebugLogging()) {
+                            log.error("Listener is null");
+                        }
                     }
+                } else if (JPEventManager.isDebugLogging()) {
+                    log.error("Can't find respond method for " + event.getClass());
                 }
-            } else if (JPEventManager.isDebugLogging()) {
-                log.error("Can't find respond method for " + event.getClass());
             }
         }
         return respondMethods;
@@ -47,7 +49,7 @@ class JPEventWorker extends SwingWorker<List<JPRespondMethod>, Void> {
             List<JPRespondMethod> respondMethods = get();
             if (respondMethods != null && !respondMethods.isEmpty()) {
                 if (JPEventManager.isDebugLogging()) {
-                    log.info(String.format("Sending event %s", event.getClass()));
+                    log.debug(String.format("Sending event %s", event.getClass()));
                 }
                 for (JPRespondMethod rm : get()) {
                     rm.execute();

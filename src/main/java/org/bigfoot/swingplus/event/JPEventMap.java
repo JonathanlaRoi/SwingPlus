@@ -53,7 +53,7 @@ class JPEventMap {
     }
 
     public void clean() {
-        listenerMaps.forEach(JPListenerMap::clean);
+        listenerMaps.removeIf(lm -> lm.size() == 0);
     }
 
     @Override

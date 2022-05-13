@@ -27,9 +27,9 @@ public class TestFrame extends JPFrame {
         JPanel testPnl = new JPPanel(new FlowLayout());
         JPanel testBtnPnl = new JPPanel(new FlowLayout());
 
-        testPnl.add(new Component());
-        testPnl.add(new Component());
-        testBtnPnl.add(new JPButton("clearpnl", e-> {
+        testPnl.add(new Listener());
+        testPnl.add(new Listener());
+        testBtnPnl.add(new JPButton("clearpnl", e -> {
             testPnl.removeAll();
             testPnl.repaint();
             testPnl.revalidate();
@@ -51,7 +51,7 @@ public class TestFrame extends JPFrame {
     }
 
     public static void main(String args[]) {
-        JPEventManager.register(Collections.singletonList(Component.class), Collections.singletonList(Event.class));
+        JPEventManager.register(Collections.singletonList(Listener.class), Collections.singletonList(Event.class));
         new TestFrame();
     }
 }

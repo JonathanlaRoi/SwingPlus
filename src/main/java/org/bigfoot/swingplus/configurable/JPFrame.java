@@ -1,7 +1,6 @@
 package org.bigfoot.swingplus.configurable;
 
 import lombok.extern.apachecommons.CommonsLog;
-import org.bigfoot.swingplus.event.JPEventManager;
 import org.bigfoot.swingplus.event.JPListener;
 
 import javax.swing.*;
@@ -16,27 +15,27 @@ public class JPFrame extends JFrame implements JPContainer, JPListener, JPResiza
 
     public JPFrame() {
         super();
-        register();
+        subscribe();
     }
 
     public JPFrame(GraphicsConfiguration arg0) {
         super(arg0);
-        register();
+        subscribe();
     }
 
     public JPFrame(String arg0) {
         super(arg0);
-        register();
+        subscribe();
     }
 
     public JPFrame(String arg0, GraphicsConfiguration arg1) {
         super(arg0, arg1);
-        register();
+        subscribe();
     }
 
     @Override
     public void dispose() {
-        JPEventManager.removeListener(this);
+        unsubscribe();
         super.dispose();
     }
 

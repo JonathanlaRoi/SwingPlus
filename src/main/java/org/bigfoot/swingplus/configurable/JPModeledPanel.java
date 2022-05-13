@@ -26,6 +26,10 @@ public class JPModeledPanel<T> extends JPPanel {
         this.setModel(arg0);
     }
 
+    public JPModeledPanel() {
+        super();
+    }
+
     public T getModel() {
         return model;
     }

@@ -3,15 +3,9 @@ package org.bigfoot.swingplus.event;
 import lombok.extern.apachecommons.CommonsLog;
 import org.bigfoot.swingplus.util.JPClassUtils;
 
-import java.lang.ref.Reference;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.WeakHashMap;
-import java.util.stream.Collectors;
 
 @CommonsLog
 class JPListenerMap {
@@ -32,6 +26,10 @@ class JPListenerMap {
 
     public Collection<JPListener> getListeners() {
         return listeners.keySet();
+    }
+
+    public int size() {
+        return listeners.size();
     }
 
     public void addListener(JPListener listener) {
@@ -57,10 +55,6 @@ class JPListenerMap {
         } catch (NoSuchMethodException ex) {
             return false;
         }
-    }
-
-    public void clean() {
-        System.gc();
     }
 
     @Override

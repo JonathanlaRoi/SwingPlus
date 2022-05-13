@@ -1,7 +1,6 @@
 package org.bigfoot.swingplus.configurable;
 
 import lombok.extern.apachecommons.CommonsLog;
-import org.bigfoot.swingplus.event.JPEventManager;
 import org.bigfoot.swingplus.event.JPListener;
 import org.bigfoot.swingplus.eventlisteners.JPLambdaMouseClickListener;
 import org.bigfoot.swingplus.eventlisteners.JPLambdaPopupMouseListener;
@@ -18,17 +17,17 @@ public class JPWindow extends JWindow implements JPListener, JPContainer, JPResi
 
     public JPWindow() {
         super();
-        register();
+        subscribe();
     }
 
     public JPWindow(GraphicsConfiguration arg0) {
         super(arg0);
-        register();
+        subscribe();
     }
 
     @Override
     public void dispose() {
-        JPEventManager.removeListener(this);
+        unsubscribe();
         super.dispose();
     }
 

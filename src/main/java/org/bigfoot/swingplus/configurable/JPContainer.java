@@ -12,13 +12,15 @@ public interface JPContainer extends JPConfigurable, JPTranslator {
     Component[] getComponents();
 
     default void onConfigure() {
-        Component[] components = this.getComponents();
+        Component[] components;
         if (this instanceof JFrame) {
             components = ((JFrame) this).getContentPane().getComponents();
         } else if (this instanceof JDialog) {
             components = ((JDialog) this).getContentPane().getComponents();
         } else if (this instanceof JWindow) {
             components = ((JWindow) this).getContentPane().getComponents();
+        } else {
+            components = this.getComponents();
         }
         for (Component comp : components) {
             if (comp instanceof JScrollPane) {

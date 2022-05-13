@@ -6,7 +6,7 @@ import org.bigfoot.swingplus.configurable.JPPanel;
  * @author Jonathan la Roi
  * @since 24/04/2022
  */
-public class Component extends JPPanel {
+public class Listener extends JPPanel {
 
     public void respond(Event event) {
 

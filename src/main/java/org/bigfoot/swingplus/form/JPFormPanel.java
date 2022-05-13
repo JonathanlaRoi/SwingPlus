@@ -78,14 +78,14 @@ public class JPFormPanel<T> extends JPModeledPanel<T> implements JPFormComponent
     }
 
     public JPFormPanel(String id, Class<T> clazz) {
-        super(null);
+        super();
         setId(id);
         this.clazz = clazz;
         setModelBasedOnType();
     }
 
     public JPFormPanel(Class<T> clazz) {
-        super(null);
+        super();
         this.clazz = clazz;
         setModelBasedOnType();
     }

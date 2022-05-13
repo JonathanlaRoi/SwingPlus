@@ -1,7 +1,6 @@
 package org.bigfoot.swingplus.configurable;
 
 import lombok.extern.apachecommons.CommonsLog;
-import org.bigfoot.swingplus.event.JPEventManager;
 import org.bigfoot.swingplus.event.JPListener;
 
 import javax.swing.*;
@@ -11,7 +10,7 @@ public class JPTabbedPane extends JTabbedPane implements JPContainer, JPListener
 
     public JPTabbedPane() {
         super();
-        register();
+        subscribe();
     }
 
     public void closeCurrent() {

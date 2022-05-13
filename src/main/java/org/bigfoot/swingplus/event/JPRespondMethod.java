@@ -23,12 +23,9 @@ class JPRespondMethod {
 
     protected void execute() throws RuntimeException {
         try {
-            if (JPEventManager.isDebugLogging()) {
-                log.info(String.format("Sending event to %s", listener));
-            }
             listener.getClass().getMethod(methodName, eventType).invoke(listener, event);
             if (JPEventManager.isDebugLogging()) {
-                log.info(String.format("Event received by %s", listener));
+                log.debug(String.format("Event received by %s", listener));
             }
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);

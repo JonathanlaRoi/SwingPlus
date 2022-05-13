@@ -2,12 +2,12 @@ package org.bigfoot.swingplus.event;
 
 public interface JPListener {
 
-    default void register() {
-        JPEventManager.addListener(this);
+    default void subscribe() {
+        JPEventManager.subscribe(this);
     }
 
-    default void unregister() {
-        JPEventManager.removeListener(this);
+    default void unsubscribe() {
+        JPEventManager.unsubscribe(this);
     }
 
 }

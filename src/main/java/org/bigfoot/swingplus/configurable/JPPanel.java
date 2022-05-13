@@ -1,7 +1,6 @@
 package org.bigfoot.swingplus.configurable;
 
 import lombok.extern.apachecommons.CommonsLog;
-import org.bigfoot.swingplus.event.JPEventManager;
 import org.bigfoot.swingplus.event.JPListener;
 import org.bigfoot.swingplus.eventlisteners.JPLambdaMouseClickListener;
 import org.bigfoot.swingplus.eventlisteners.JPLambdaPopupMouseListener;
@@ -18,22 +17,22 @@ public class JPPanel extends JPanel implements JPContainer, JPListener {
 
     public JPPanel(LayoutManager arg0, boolean arg1) {
         super(arg0, arg1);
-        register();
+        subscribe();
     }
 
     public JPPanel(LayoutManager arg0) {
         super(arg0);
-        register();
+        subscribe();
     }
 
     public JPPanel(boolean arg0) {
         super(arg0);
-        register();
+        subscribe();
     }
 
     public JPPanel() {
         super();
-        register();
+        subscribe();
     }
 
     public void addMouseListener(JPLambdaPopupMouseListener adapter) {
