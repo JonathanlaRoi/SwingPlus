@@ -17,11 +17,13 @@ public class JPFormatInputFilter extends JPLimitInputFilter {
 	}
 	
 	public boolean validate(String text){
-		if(pattern == null){
+		if (pattern == null) {
 			return super.validate(text);
-		} else {
+		} else if (text != null) {
 			Matcher matcher = pattern.matcher(text);
 			return super.validate(text) && matcher.matches();
+		} else {
+			return true;
 		}
 	}
 	

@@ -274,6 +274,15 @@ public class JPNotification extends JPWindow {
             panel.addMouseListener(listener);
             titleLabel.addMouseListener(listener);
             descriptionLbl.addMouseListener(listener);
+            setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            panel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            titleLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            descriptionLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        } else {
+            setCursor(Cursor.getDefaultCursor());
+            panel.setCursor(Cursor.getDefaultCursor());
+            titleLabel.setCursor(Cursor.getDefaultCursor());
+            descriptionLbl.setCursor(Cursor.getDefaultCursor());
         }
     }
 

@@ -31,7 +31,7 @@ public class JPFormatDocumentFilter extends JPLimitDocumentFilter {
 
     @Override
     public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
-        if (regex != null && pattern != null) {
+        if (regex != null && pattern != null && text != null) {
             Matcher matcher = pattern.matcher(text);
             if (!matcher.matches()) {
                 String charsToRemove = matcher.replaceAll(regex);
