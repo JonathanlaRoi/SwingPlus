@@ -4,6 +4,8 @@ import lombok.extern.apachecommons.CommonsLog;
 
 import java.lang.reflect.InvocationTargetException;
 
+import static org.bigfoot.swingplus.event.JPEventManagerUtils.getResponseMethodForListener;
+
 @CommonsLog
 class JPRespondMethod {
 
@@ -23,11 +25,11 @@ class JPRespondMethod {
 
     protected void execute() throws RuntimeException {
         try {
-            listener.getClass().getMethod(methodName, eventType).invoke(listener, event);
+            getResponseMethodForListener(listener.getClass(), eventType).invoke(listener, event);
             if (JPEventManager.isDebugLogging()) {
                 log.debug(String.format("Event received by %s", listener));
             }
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+        } catch (IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }

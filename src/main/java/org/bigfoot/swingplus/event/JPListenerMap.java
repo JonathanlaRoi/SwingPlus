@@ -7,6 +7,8 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.WeakHashMap;
 
+import static org.bigfoot.swingplus.event.JPEventManagerUtils.listenerContainsEventMethod;
+
 @CommonsLog
 class JPListenerMap {
 
@@ -49,12 +51,7 @@ class JPListenerMap {
     }
 
     public boolean containsEventRespondMethod(Class<? extends JPEvent> eventType) {
-        try {
-            type.getMethod(respondMethodName, eventType);
-            return true;
-        } catch (NoSuchMethodException ex) {
-            return false;
-        }
+        return listenerContainsEventMethod(type, eventType);
     }
 
     @Override
