@@ -167,12 +167,33 @@ public class JPFormHelper {
                     ((JTextComponent) comp).setEditable(editable);
                 } else if (comp instanceof JPEditable) {
                     ((JPEditable) comp).setEditable(editable);
-                } else if (comp instanceof JPFormPanel<?>) {
-                    ((JPFormPanel<?>) comp).setEditable(editable);
                 } else if (!(comp instanceof JPReadOnly)) {
                     ((Component) comp).setEnabled(editable);
                 }
             }
         }
+    }
+
+    public static JPFormPanel<?> getFormOfComponent(JPFormComponent<?> component) {
+        if (component instanceof Component) {
+            return getFormOfComponent((Component) component);
+        }
+        return null;
+    }
+
+    public static JPFormPanel<?> getFormOfComponent(Component component) {
+        if (component != null) {
+            if (component instanceof JPFormPanel) {
+                return (JPFormPanel<?>) component;
+            } else {
+                Container parent = component.getParent();
+                if (parent instanceof JPFormPanel) {
+                    return (JPFormPanel<?>) parent;
+                } else if (parent != null) {
+                    return getFormOfComponent(parent);
+                }
+            }
+        }
+        return null;
     }
 }

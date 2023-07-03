@@ -2,6 +2,7 @@ package org.bigfoot.swingplus.configurable;
 
 import lombok.extern.apachecommons.CommonsLog;
 import org.bigfoot.swingplus.event.JPListener;
+import org.bigfoot.swingplus.event.v2.JPSender;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +12,7 @@ import java.awt.*;
  * @since 8/24/2020
  */
 @CommonsLog
-public class JPSplitPane extends JSplitPane implements JPContainer, JPListener {
+public class JPSplitPane extends JSplitPane implements JPContainer, JPListener, JPSender {
 
     public JPSplitPane() {
         super();

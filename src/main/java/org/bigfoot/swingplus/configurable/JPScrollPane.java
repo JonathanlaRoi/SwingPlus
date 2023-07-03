@@ -2,6 +2,7 @@ package org.bigfoot.swingplus.configurable;
 
 import lombok.extern.apachecommons.CommonsLog;
 import org.bigfoot.swingplus.event.JPListener;
+import org.bigfoot.swingplus.event.v2.JPSender;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +12,7 @@ import java.awt.*;
  * @since 18/01/2021
  */
 @CommonsLog
-public class JPScrollPane extends JScrollPane implements JPContainer, JPListener {
+public class JPScrollPane extends JScrollPane implements JPContainer, JPListener, JPSender {
 
     public JPScrollPane(Component view, int vsbPolicy, int hsbPolicy) {
         super(view, vsbPolicy, hsbPolicy);

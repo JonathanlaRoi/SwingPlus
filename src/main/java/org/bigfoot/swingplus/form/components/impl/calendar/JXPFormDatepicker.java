@@ -27,11 +27,11 @@ public class JXPFormDatepicker extends JXPDatePicker implements JPFormComponent<
     private boolean updatable = true;
 
     public JXPFormDatepicker(String id) {
-        this(id, (Date) null, Locale.getDefault());
+        this(id, (LocalDate) null, Locale.getDefault());
     }
 
-    public JXPFormDatepicker(String id, Date selected) {
-        this(id, selected, Locale.getDefault());
+    public JXPFormDatepicker(String id, Date selection) {
+        this(id, selection, Locale.getDefault());
     }
 
     public JXPFormDatepicker(String id, LocalDate selection) {

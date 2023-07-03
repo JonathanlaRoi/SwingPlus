@@ -2,11 +2,12 @@ package org.bigfoot.swingplus.configurable;
 
 import lombok.extern.apachecommons.CommonsLog;
 import org.bigfoot.swingplus.event.JPListener;
+import org.bigfoot.swingplus.event.v2.JPSender;
 
 import javax.swing.*;
 
 @CommonsLog
-public class JPTabbedPane extends JTabbedPane implements JPContainer, JPListener {
+public class JPTabbedPane extends JTabbedPane implements JPContainer, JPListener, JPSender {
 
     public JPTabbedPane() {
         super();

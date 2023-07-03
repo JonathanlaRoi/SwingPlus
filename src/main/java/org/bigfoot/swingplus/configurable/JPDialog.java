@@ -2,6 +2,7 @@ package org.bigfoot.swingplus.configurable;
 
 import lombok.extern.apachecommons.CommonsLog;
 import org.bigfoot.swingplus.event.JPListener;
+import org.bigfoot.swingplus.event.v2.JPSender;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +12,7 @@ import java.awt.*;
  * @since 1 augustus 2019
  */
 @CommonsLog
-public class JPDialog extends JDialog implements JPContainer, JPListener, JPResizable {
+public class JPDialog extends JDialog implements JPContainer, JPListener, JPResizable, JPSender {
 
     public JPDialog() {
         super();

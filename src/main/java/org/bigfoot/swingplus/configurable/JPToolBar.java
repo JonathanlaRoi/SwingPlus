@@ -1,6 +1,8 @@
 package org.bigfoot.swingplus.configurable;
 
 import lombok.extern.apachecommons.CommonsLog;
+import org.bigfoot.swingplus.event.JPListener;
+import org.bigfoot.swingplus.event.v2.JPSender;
 import org.bigfoot.swingplus.eventlisteners.JPLambdaMouseClickListener;
 import org.bigfoot.swingplus.eventlisteners.JPLambdaPopupMouseListener;
 
@@ -12,11 +14,12 @@ import java.awt.*;
  * @since 1 augustus 2019
  */
 @CommonsLog
-public class JPToolBar extends JToolBar implements JPContainer {
+public class JPToolBar extends JToolBar implements JPContainer, JPListener, JPSender {
 
     public JPToolBar() {
         super();
         setFloatable(false);
+        subscribe();
     }
 
     @Override

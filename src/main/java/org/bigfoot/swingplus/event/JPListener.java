@@ -10,4 +10,8 @@ public interface JPListener {
         JPEventManager.unsubscribe(this);
     }
 
+    default void send(JPEvent event) {
+        JPEventManager.send(event);
+    }
+
 }

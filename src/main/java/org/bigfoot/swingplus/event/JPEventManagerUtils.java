@@ -22,8 +22,7 @@ public class JPEventManagerUtils {
         }
     }
 
-    private static Method getEventMethodBasedOnAnnotation(Class<? extends JPListener> listener, Class<? extends JPEvent> eventType) {
-        Class<?> listenerType = listener;
+    public static Method getEventMethodBasedOnAnnotation(Class<?> listenerType, Class<? extends JPEvent> eventType) {
         while (listenerType != Object.class) {
             for (final Method method : listenerType.getDeclaredMethods()) {
                 if (method.isAnnotationPresent(OnJPEvent.class) &&

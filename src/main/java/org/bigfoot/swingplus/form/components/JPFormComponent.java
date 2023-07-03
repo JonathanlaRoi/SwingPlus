@@ -1,6 +1,8 @@
 package org.bigfoot.swingplus.form.components;
 
 import org.bigfoot.swingplus.configurable.JPConfigurable;
+import org.bigfoot.swingplus.form.JPFormHelper;
+import org.bigfoot.swingplus.form.JPFormPanel;
 
 public interface JPFormComponent<T> extends JPConfigurable {
 
@@ -61,5 +63,9 @@ public interface JPFormComponent<T> extends JPConfigurable {
 
     default boolean isValid() {
         return true;
+    }
+
+    default JPFormPanel<?> getForm() {
+        return JPFormHelper.getFormOfComponent(this);
     }
 }

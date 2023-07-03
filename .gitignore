@@ -42,3 +42,4 @@ hs_err_pid*
 /.idea/SwingPlus.iml
 /.idea/vcs.xml
 /.idea/uiDesigner.xml
+/src/test/java/org/bigfoot/swingplus/*.java
