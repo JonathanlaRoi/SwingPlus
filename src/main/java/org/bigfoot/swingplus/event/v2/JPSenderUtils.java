@@ -57,9 +57,7 @@ public class JPSenderUtils {
 					.flatMap(Arrays::stream)
 					.collect(Collectors.toList());
 
-			for (Component c : subComponents) {
-				handleBreathEvent(c, event);
-			}
+			handleBreathEvent(subComponents.toArray(new Component[0]), event);
 		}
 	}
 
