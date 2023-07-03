@@ -33,7 +33,6 @@ public class JPSenderUtils {
 	}
 
 	private static void handleBreathEvent(Object sender, JPEvent event) throws InvocationTargetException, IllegalAccessException {
-		//TODO This doesn't work somehow
 		if (sender instanceof Container) {
 			handleBreathEvent(((Container) sender).getComponents(), event);
 		}
