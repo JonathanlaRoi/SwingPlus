@@ -1,7 +1,9 @@
 package org.bigfoot.swingplus.configurable;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Component;
+
+import javax.swing.JScrollPane;
+import javax.swing.RootPaneContainer;
 
 /**
  * @author Jonathan la Roi
@@ -13,20 +15,22 @@ public interface JPContainer extends JPConfigurable, JPTranslator {
 
     default void onConfigure() {
         Component[] components;
-        if (this instanceof JFrame) {
-            components = ((JFrame) this).getContentPane().getComponents();
-        } else if (this instanceof JDialog) {
-            components = ((JDialog) this).getContentPane().getComponents();
-        } else if (this instanceof JWindow) {
-            components = ((JWindow) this).getContentPane().getComponents();
-        } else {
+        if (this instanceof RootPaneContainer)
+        {
+            components = ((RootPaneContainer) this).getContentPane().getComponents();
+        }
+        else
+        {
             components = this.getComponents();
         }
-        for (Component comp : components) {
-            if (comp instanceof JScrollPane) {
+        for (Component comp : components)
+        {
+            if (comp instanceof JScrollPane)
+            {
                 comp = ((JScrollPane) comp).getViewport().getView();
             }
-            if (comp instanceof JPConfigurable) {
+            if (comp instanceof JPConfigurable)
+            {
                 ((JPConfigurable) comp).onConfigure();
             }
         }

@@ -1,11 +1,12 @@
 package org.bigfoot.swingplus.event;
 
-import lombok.extern.apachecommons.CommonsLog;
-
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+
+import javax.swing.SwingWorker;
+
+import lombok.extern.apachecommons.CommonsLog;
 
 /**
  * @author Jonathan la Roi
@@ -36,7 +37,7 @@ class JPEventWorker extends SwingWorker<List<JPRespondMethod>, Void> {
                         }
                     }
                 } else if (JPEventManager.isDebugLogging()) {
-                    log.error("Can't find respond method for " + event.getClass());
+                    log.debug("Can't find respond method for " + event.getClass());
                 }
             }
         }
