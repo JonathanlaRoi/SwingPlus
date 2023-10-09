@@ -1,18 +1,23 @@
 package org.bigfoot.swingplus.configurable.components.text;
 
-import lombok.Getter;
+import java.awt.Graphics;
+import java.awt.Insets;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.DocumentFilter;
+
 import org.bigfoot.swingplus.configurable.JPConfigurable;
 import org.bigfoot.swingplus.configurable.components.text.filter.JPFormatDocumentFilter;
 import org.bigfoot.swingplus.configurable.components.text.filter.JPLimitDocumentFilter;
 import org.bigfoot.swingplus.eventlisteners.JPLambdaMouseClickListener;
 import org.bigfoot.swingplus.eventlisteners.JPLambdaPopupMouseListener;
 
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.text.AbstractDocument;
-import javax.swing.text.DocumentFilter;
-import java.awt.*;
-import java.awt.event.ActionListener;
+import lombok.Getter;
 
 /**
  * TODO Refactor voor alle input validatie meuk
@@ -39,6 +44,7 @@ public class JPTextField extends JTextField implements JPConfigurable {
         this(null, null);
     }
 
+    @Deprecated
     public JPTextField(Integer maxLength) {
         this(null, maxLength);
     }
@@ -47,12 +53,14 @@ public class JPTextField extends JTextField implements JPConfigurable {
         this(text, null);
     }
 
+    @Deprecated
     public JPTextField(String text, Integer maxLength) {
         super(text);
         setMaxLength(maxLength);
         this.border = getBorder();
     }
 
+    @Deprecated
     public void setMaxLength(Integer limit) {
         if (limit != null) {
             if (limit < this.getText().length()) {
@@ -72,6 +80,7 @@ public class JPTextField extends JTextField implements JPConfigurable {
         }
     }
 
+    @Deprecated
     public Integer getMaxLength() {
         AbstractDocument document = ((AbstractDocument) this.getDocument());
         if (document.getDocumentFilter() instanceof JPLimitDocumentFilter) {
@@ -88,10 +97,12 @@ public class JPTextField extends JTextField implements JPConfigurable {
         this.required = required;
     }
 
+    @Deprecated
     public String getFormat() {
         return format;
     }
 
+    @Deprecated
     public void setFormat(String format) {
         this.format = format;
         setMaxLength(getMaxLength());
